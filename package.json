@@ -1,0 +1,42 @@
+{
+  "name": "sylkrtc",
+  "version": "0.0.1",
+  "main": "lib/sylkrtc.js",
+  "description": "SylkServer WebRTC Gateway client library",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AGProjects/sylkrtc.git"
+  },
+  "keywords": [],
+  "author": "AG Projects",
+  "contributors": [
+    "Tijmen de Mes <tijmen@ag-projects.com>",
+    "Saúl Ibarra Corretgé <saul@ag-projects.com>"
+  ],
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "browserify": {
+      "transform": ["babelify"]
+  },
+  "dependencies": {
+    "blueimp-md5": "^1.1.0",
+    "debug": "^2.2.0",
+    "node-uuid": "^1.4.3",
+    "rtcninja": "^0.6.2",
+    "websocket": "^1.0.19"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.3",
+    "gulp": "git+https://github.com/gulpjs/gulp.git#4.0",
+    "gulp-filelog": "^0.4.1",
+    "gulp-header": "^1.2.2",
+    "gulp-jshint": "^1.11.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "jshint-stylish": "^2.0.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

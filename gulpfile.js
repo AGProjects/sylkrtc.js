@@ -36,8 +36,8 @@ gulp.task('lint', function () {
 
 gulp.task('build', function () {
     var dest;
-    var is_production = (gutil.env.type === 'production');
-    if (is_production) {
+    var isProduction = (gutil.env.type === 'production');
+    if (isProduction) {
         dest = PKG_INFO.name + '.min.js';
     } else {
         dest = PKG_INFO.name + '.js';
@@ -51,7 +51,7 @@ gulp.task('build', function () {
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(filelog('build'))
-        .pipe(is_production ? uglify() : gutil.noop())
+        .pipe(isProduction ? uglify({mangle: false}) : gutil.noop())
         .pipe(header(BANNER, BANNER_OPTS))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/'));

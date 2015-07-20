@@ -74,7 +74,7 @@ Note: when a `Call` is terminated all streams will be automatically closed.
 Object representing the interaction with SylkServer. Multiple connections can be created with `sylkrtc.createConnection`, but typically only one is needed. Reconnecting in case the connection is interrupted is taken care of automatically.
 
 Events emitted:
-* **ready**: indicates the WebSocket connection has been established and interaction is now possible.
+* **stateChanged**: indicates the WebSocket connection state has changed. Two arguments are provided: `oldState` and `newState`, the old connection state and the new connection state, respectively. Possible state values are: null, connecting, connected, ready, disconnected and closed. If the connection is involuntarily interrupted the state will transition to disconnected and the connection will be retried. Once the closed state is set, as a result of the user calling Connection.close(), the connection can no longer be used or reconnected.
 
 #### Connection.setupAccount(options={})
 
@@ -90,9 +90,13 @@ Example:
 
 Destroys the given account. The account will be unbound as part of the process.
 
-#### Connection.close
+#### Connection.close()
 
 Close the connection with SylkServer. All accounts will be unbound.
+
+#### Connection.state
+
+Getter property returning the current connection state.
 
 ### Account
 

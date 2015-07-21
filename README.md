@@ -177,6 +177,10 @@ Getter property which returns the ID for this call. Note: this is not related to
 
 Getter property which returns the call direction: "incoming" or "outgoing". Note: this is not related to the SDP "a=" direction attribute.
 
+#### Call.state
+
+Getter property which returns the call state.
+
 ## License
 
 MIT. See the `LICENSE` file in this directory.

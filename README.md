@@ -76,19 +76,35 @@ Object representing the interaction with SylkServer. Multiple connections can be
 Events emitted:
 * **stateChanged**: indicates the WebSocket connection state has changed. Two arguments are provided: `oldState` and `newState`, the old connection state and the new connection state, respectively. Possible state values are: null, connecting, connected, ready, disconnected and closed. If the connection is involuntarily interrupted the state will transition to disconnected and the connection will be retried. Once the closed state is set, as a result of the user calling Connection.close(), the connection can no longer be used or reconnected.
 
-#### Connection.setupAccount(options={})
+#### Connection.addAccount(options={}, cb=null)
 
 Configures an `Account` to be used through `sylkrtc`.  2 options are required: *account* (the account ID) and *password*. The account won't be registered, it will just be created.
 
 The *password* won't be stored or transmitted as given, the HA1 hash (as used in [Digest access authentication](https://en.wikipedia.org/wiki/Digest_access_authentication)) is created and used instead.
 
+The `cb` argument is a callback which will be called with an error and the account object
+itself.
+
 Example:
 
-    let account = connection.setupAccount({account: saghul@sip2sip.info, password: 1234});
+    connection.addAccount({account: saghul@sip2sip.info, password: 1234}, function(error, account) {
+        if (error) {
+            console.log('Error adding account!' + account);
+        } else {
+            console.log('Account added!');
+        }
+    });
 
-#### Connection.destroyAccount(account)
+#### Connection.removeAccount(account, cb=null)
 
-Destroys the given account. The account will be unbound as part of the process.
+Removes the given account. The callback will be called once the operation completes (it
+cannot fail).
+
+Example:
+
+    connection.removeAccount(account, function() {
+        console('Account removed!');
+    });
 
 #### Connection.close()
 
@@ -107,13 +123,17 @@ Events emitted:
 * **outgoingCall**: emitted when an outgoing call is made. A single argument is provided: the `Call` object.
 * **incomingCall**: emitted when an incoming call is received. A single argument is provided: the `Call` object.
 
-#### Account.bind()
+#### Account.register()
 
-*Bind* the account to the current connection. This involves registering the account via SIP.
+Start the SIP registration process for the account. Progress will be reported via the
+*registrationStateChanged* event.
 
-#### Account.unbind()
+Note: it's not necessary to be registered to make an outgoing call.
 
-*Unbind* the account. This involves unregistering the account via SIP.
+#### Account.unregister()
+
+Unregister the account. Progress will be reported via the
+*registrationStateChanged* event.
 
 #### Account.call(uri, options={})
 
@@ -129,6 +149,10 @@ Example:
 #### Account.id
 
 Getter property returning the account ID.
+
+#### Account.password
+
+Getter property returning the HA1 password for the account.
 
 #### Account.registrationState
 

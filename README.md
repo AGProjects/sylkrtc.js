@@ -207,6 +207,14 @@ Getter property which returns the call direction: "incoming" or "outgoing". Note
 
 Getter property which returns the call state.
 
+#### Call.localIdentity
+
+Getter property which returns the local identity URI (SIP URI).
+
+#### Call.remoteIdentity
+
+Getter property which returns the remote identity URI (SIP URI).
+
 ## License
 
 MIT. See the `LICENSE` file in this directory.

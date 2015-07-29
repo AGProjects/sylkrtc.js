@@ -119,7 +119,11 @@ Getter property returning the current connection state.
 Object representing a SIP account which will be used for making / receiving calls.
 
 Events emitted:
-* **registrationStateChanged**: indicates the SIP registration state has changed. Two arguments are provided: `oldState` and `newState`, the old registration state and the new registration state, respectively.
+* **registrationStateChanged**: indicates the SIP registration state has changed. Three arguments are provided: `oldState`, `newState` and `data`. `oldState` and `newState` represent the old registration state and the new registration state, respectively, and `data` is a generic per-state data object. Possible states:
+  * null: registration hasn't started or it has ended
+  * registering: registration is in progress
+  * registered
+  * failed: registration failed, the `data` object will contain a 'reason' property.
 * **outgoingCall**: emitted when an outgoing call is made. A single argument is provided: the `Call` object.
 * **incomingCall**: emitted when an incoming call is received. A single argument is provided: the `Call` object.
 

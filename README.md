@@ -173,7 +173,7 @@ Events emitted:
     * terminated: the call has ended (the `data` attribute contains the reason)
     * accepted: the call has been accepted (either locally or remotely)
     * incoming: initial state for incoming calls
-    * calling: initial state for outgoing calls
+    * progress: initial state for outgoing calls
     * established: call media has been established
 
 #### Call.answer(options={})

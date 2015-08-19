@@ -170,7 +170,7 @@ Events emitted:
 * **localStreamAdded**: emitted when the local stream is added to the call. A single argument is provided: the stream itself.
 * **streamAdded**: emitted when a remote stream is added to the call. A single argument is provided: the stream itself.
 * **stateChanged**: indicates the call state has changed. Three arguments are provided: `oldState`, `newState` and `data`. `oldState` and `newState` indicate the previous and current state respectively, and `data` is a generic per-state data object. Possible states:
-    * terminated: the call has ended (the `data` attribute contains the reason)
+    * terminated: the call has ended (the `data` object contains a `reason` attribute)
     * accepted: the call has been accepted (either locally or remotely)
     * incoming: initial state for incoming calls
     * progress: initial state for outgoing calls

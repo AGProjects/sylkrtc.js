@@ -9,7 +9,7 @@ JavaScript library implementing the API for communicating with [SylkServer's](ht
 Grab the source code using Darcs or Git and install the dependencies:
 
     cd sylkrtc
-    npm install
+    ./configure
 
 
 Build the development release (not minified):

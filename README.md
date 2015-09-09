@@ -30,7 +30,7 @@ Auto-building the library as changes are made:
 
 ### Debugging
 
-sylkrtc uses the [debug]() library for easy debugging. By default debugging is disabled. In order to enable sylkrtc debug type the following in the browser JavaScript console:
+sylkrtc uses the [debug](https://github.com/visionmedia/debug) library for easy debugging. By default debugging is disabled. In order to enable sylkrtc debug type the following in the browser JavaScript console:
 
     sylkrtc.debug.enable('sylkrtc*');
 

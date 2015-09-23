@@ -55,13 +55,15 @@ Example:
 
     let connection = sylkrtc.createConnection({server: 'wss://1.2.3.4:8088/webrtcgateway/ws'});
 
-#### sylkrtc.isWebRTCSupported()
+#### sylkrtc.debug
 
-Returns a boolean value indicated if the current environment supports WebRTC.
+[debug](https://github.com/visionmedia/debug) module, exposed.
+Used for debugging, with the 'sylkrtc' prefix.
 
-#### sylkrtc.attachMediaStream(element, stream)
+#### sylkrtc.rtcninja
 
-Helper function to attach the given `stream` (an instance of `RTCMediaStream`) to a given HTML element.
+[rtcninja](https://github.com/eface2face/rtcninja.js) module, exposed.
+Used for accessing WebRTC APIs and dealing with platform differences.
 
 #### sylkrtc.closeMediaStream(stream)
 

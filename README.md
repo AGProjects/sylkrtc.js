@@ -128,6 +128,7 @@ Events emitted:
   * failed: registration failed, the `data` object will contain a 'reason' property.
 * **outgoingCall**: emitted when an outgoing call is made. A single argument is provided: the `Call` object.
 * **incomingCall**: emitted when an incoming call is received. A single argument is provided: the `Call` object.
+* **missedCall**: emitted when an incoming call is missed. A `data` object is provided, which contains an `originator` attribute.
 
 #### Account.register()
 

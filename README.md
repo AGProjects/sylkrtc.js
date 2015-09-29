@@ -148,6 +148,7 @@ Start an outgoing call. Supported options:
 * pcConfig: configuration options for `RTCPeerConnection`. [Reference](http://w3c.github.io/webrtc-pc/#configuration).
 * mediaConstraints: constraints to be used when getting the local user media. [Reference](http://www.w3.org/TR/mediacapture-streams/#mediastreamconstraints).
 * offerOptions: `RTCOfferOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCOfferOptions).
+* localStream: if specified, it will be used by sylkrtc instead of using `getUserMedia`.
 
 Example:
 
@@ -185,6 +186,7 @@ Answer an incoming call. Supported options:
 * pcConfig: configuration options for `RTCPeerConnection`. [Reference](http://w3c.github.io/webrtc-pc/#configuration).
 * mediaConstraints: constraints to be used when getting the local user media. [Reference](http://www.w3.org/TR/mediacapture-streams/#mediastreamconstraints).
 * answerOptions: `RTCAnswerOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCAnswerOptions).
+* localStream: if specified, it will be used by sylkrtc instead of using `getUserMedia`.
 
 #### Call.terminate()
 

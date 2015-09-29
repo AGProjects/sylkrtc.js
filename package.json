@@ -25,6 +25,7 @@
     "debug": "^2.2.0",
     "node-uuid": "^1.4.3",
     "rtcninja": "^0.6.4",
+    "sdp-transform": "^1.5.0",
     "websocket": "^1.0.21"
   },
   "devDependencies": {

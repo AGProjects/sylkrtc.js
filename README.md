@@ -228,3 +228,8 @@ Getter property which returns the remote identity URI (SIP URI).
 ## License
 
 MIT. See the `LICENSE` file in this directory.
+
+## Credits
+
+Special thanks to NLNET http://nlnet.nl for sponsoring most of the efforts behind this project.
+

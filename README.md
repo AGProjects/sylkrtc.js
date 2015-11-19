@@ -231,5 +231,5 @@ MIT. See the `LICENSE` file in this directory.
 
 ## Credits
 
-Special thanks to NLNET http://nlnet.nl for sponsoring most of the efforts behind this project.
+Special thanks to [NLnet](http://nlnet.nl) for sponsoring most of the efforts behind this project.
 

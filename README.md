@@ -130,7 +130,8 @@ Events emitted:
 * **outgoingCall**: emitted when an outgoing call is made. A single argument is provided: the `Call` object.
 * **incomingCall**: emitted when an incoming call is received. Two arguments are provided: the `Call` object and a `mediaTypes`
   object, which has 2 boolean properties: `audio` and `video`, indicating if those media types were present in the initial SDP.
-* **missedCall**: emitted when an incoming call is missed. A `data` object is provided, which contains an `originator` attribute.
+* **missedCall**: emitted when an incoming call is missed. A `data` object is provided, which contains an `originator` attribute,
+  which is an `Identity` object.
 
 #### Account.register()
 
@@ -220,11 +221,29 @@ Getter property which returns the call state.
 
 #### Call.localIdentity
 
-Getter property which returns the local identity URI (SIP URI).
+Getter property which returns the local identity. (See the `Identity` object).
 
 #### Call.remoteIdentity
 
-Getter property which returns the remote identity URI (SIP URI).
+Getter property which returns the remote identity. (See the `Identity` object).
+
+### Identity
+
+Object representing the identity of the caller / callee.
+
+#### Identity.uri
+
+SIP URI, without the 'sip:' prefix.
+
+#### Identity.displayName
+
+Display name assiciated with the identity. Set to '' if absent.
+
+#### Identity.toString()
+
+Function returning a string representation of the identity. It can take 2 forms
+depending on the availability of the display name: 'bob@biloxi.com' or
+'Bob <bob@biloxi.com>'.
 
 ## License
 
@@ -233,4 +252,3 @@ MIT. See the `LICENSE` file in this directory.
 ## Credits
 
 Special thanks to [NLnet](http://nlnet.nl) for sponsoring most of the efforts behind this project.
-

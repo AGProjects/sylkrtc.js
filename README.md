@@ -109,6 +109,10 @@ Example:
         console('Account removed!');
     });
 
+#### Connection.reconnect()
+
+Starts reconnecting immediately if the state was 'disconnected';
+
 #### Connection.close()
 
 Close the connection with SylkServer. All accounts will be unbound.

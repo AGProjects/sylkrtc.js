@@ -80,7 +80,7 @@ Events emitted:
 
 #### Connection.addAccount(options={}, cb=null)
 
-Configures an `Account` to be used through `sylkrtc`.  2 options are required: *account* (the account ID) and *password*. The account won't be registered, it will just be created. Optionally *realm* can be passed, which will be used instead of the domain for the HA1
+Configures an `Account` to be used through `sylkrtc`.  2 options are required: *account* (the account ID) and *password*. An optional *displayName* can be set. The account won't be registered, it will just be created. Optionally *realm* can be passed, which will be used instead of the domain for the HA1
 calculation.
 
 The *password* won't be stored or transmitted as given, the HA1 hash (as used in [Digest access authentication](https://en.wikipedia.org/wiki/Digest_access_authentication)) is created and used instead.
@@ -164,6 +164,10 @@ Example:
 #### Account.id
 
 Getter property returning the account ID.
+
+#### Account.displayName
+
+Getter property returning the account display name.
 
 #### Account.password
 

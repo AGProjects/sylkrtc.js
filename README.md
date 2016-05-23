@@ -1,7 +1,8 @@
 
 # sylkrtc.js
 
-JavaScript library implementing the API for communicating with [SylkServer's](http://sylkserver.com) WebRTC gateway application.
+JavaScript library implementing the API for communicating with [SylkServer's](http://sylkserver.com)
+WebRTC gateway application.
 
 
 ## Building
@@ -67,23 +68,32 @@ Used for accessing WebRTC APIs and dealing with platform differences.
 
 #### sylkrtc.closeMediaStream(stream)
 
-Helper function to close the given `stream`. When a local media stream is closed the camera is stopped in case it was active, for example.
+Helper function to close the given `stream`. When a local media stream is closed the camera is stopped in case it was
+active, for example.
 
 Note: when a `Call` is terminated all streams will be automatically closed.
 
 ### Connection
 
-Object representing the interaction with SylkServer. Multiple connections can be created with `sylkrtc.createConnection`, but typically only one is needed. Reconnecting in case the connection is interrupted is taken care of automatically.
+Object representing the interaction with SylkServer. Multiple connections can be created with
+`sylkrtc.createConnection`, but typically only one is needed. Reconnecting in case the connection is interrupted is
+taken care of automatically.
 
 Events emitted:
-* **stateChanged**: indicates the WebSocket connection state has changed. Two arguments are provided: `oldState` and `newState`, the old connection state and the new connection state, respectively. Possible state values are: null, connecting, connected, ready, disconnected and closed. If the connection is involuntarily interrupted the state will transition to disconnected and the connection will be retried. Once the closed state is set, as a result of the user calling Connection.close(), the connection can no longer be used or reconnected.
+* **stateChanged**: indicates the WebSocket connection state has changed. Two arguments are provided: `oldState` and
+  `newState`, the old connection state and the new connection state, respectively. Possible state values are: null,
+  connecting, connected, ready, disconnected and closed. If the connection is involuntarily interrupted the state will
+  transition to disconnected and the connection will be retried. Once the closed state is set, as a result of the user
+  calling Connection.close(), the connection can no longer be used or reconnected.
 
 #### Connection.addAccount(options={}, cb=null)
 
-Configures an `Account` to be used through `sylkrtc`.  2 options are required: *account* (the account ID) and *password*. An optional *displayName* can be set. The account won't be registered, it will just be created. Optionally *realm* can be passed, which will be used instead of the domain for the HA1
-calculation.
+Configures an `Account` to be used through `sylkrtc`.  2 options are required: *account* (the account ID) and
+*password*. An optional *displayName* can be set. The account won't be registered, it will just be created.
+Optionally *realm* can be passed, which will be used instead of the domain for the HA1 calculation.
 
-The *password* won't be stored or transmitted as given, the HA1 hash (as used in [Digest access authentication](https://en.wikipedia.org/wiki/Digest_access_authentication)) is created and used instead.
+The *password* won't be stored or transmitted as given, the HA1 hash (as used in
+[Digest access authentication](https://en.wikipedia.org/wiki/Digest_access_authentication)) is created and used instead.
 
 The `cb` argument is a callback which will be called with an error and the account object
 itself.
@@ -126,16 +136,19 @@ Getter property returning the current connection state.
 Object representing a SIP account which will be used for making / receiving calls.
 
 Events emitted:
-* **registrationStateChanged**: indicates the SIP registration state has changed. Three arguments are provided: `oldState`, `newState` and `data`. `oldState` and `newState` represent the old registration state and the new registration state, respectively, and `data` is a generic per-state data object. Possible states:
-  * null: registration hasn't started or it has ended
-  * registering: registration is in progress
-  * registered
-  * failed: registration failed, the `data` object will contain a 'reason' property.
+* **registrationStateChanged**: indicates the SIP registration state has changed. Three arguments are provided:
+  `oldState`, `newState` and `data`. `oldState` and `newState` represent the old registration state and the new
+  registration state, respectively, and `data` is a generic per-state data object. Possible states:
+   * null: registration hasn't started or it has ended
+   * registering: registration is in progress
+   * registered
+   * failed: registration failed, the `data` object will contain a 'reason' property.
 * **outgoingCall**: emitted when an outgoing call is made. A single argument is provided: the `Call` object.
-* **incomingCall**: emitted when an incoming call is received. Two arguments are provided: the `Call` object and a `mediaTypes`
-  object, which has 2 boolean properties: `audio` and `video`, indicating if those media types were present in the initial SDP.
-* **missedCall**: emitted when an incoming call is missed. A `data` object is provided, which contains an `originator` attribute,
-  which is an `Identity` object.
+* **incomingCall**: emitted when an incoming call is received. Two arguments are provided: the `Call` object and a
+  `mediaTypes` object, which has 2 boolean properties: `audio` and `video`, indicating if those media types were
+  present in the initial SDP.
+* **missedCall**: emitted when an incoming call is missed. A `data` object is provided, which contains an `originator`
+  attribute, which is an `Identity` object.
 
 #### Account.register()
 
@@ -184,7 +197,9 @@ Object representing a audio/video call. Signalling is done using SIP underneath.
 Events emitted:
 * **localStreamAdded**: emitted when the local stream is added to the call. A single argument is provided: the stream itself.
 * **streamAdded**: emitted when a remote stream is added to the call. A single argument is provided: the stream itself.
-* **stateChanged**: indicates the call state has changed. Three arguments are provided: `oldState`, `newState` and `data`. `oldState` and `newState` indicate the previous and current state respectively, and `data` is a generic per-state data object. Possible states:
+* **stateChanged**: indicates the call state has changed. Three arguments are provided: `oldState`, `newState` and
+  `data`. `oldState` and `newState` indicate the previous and current state respectively, and `data` is a generic
+  per-state data object. Possible states:
     * terminated: the call has ended (the `data` object contains a `reason` attribute)
     * accepted: the call has been accepted (either locally or remotely)
     * incoming: initial state for incoming calls
@@ -221,7 +236,8 @@ Getter property which returns the ID for this call. Note: this is not related to
 
 #### Call.direction
 
-Getter property which returns the call direction: "incoming" or "outgoing". Note: this is not related to the SDP "a=" direction attribute.
+Getter property which returns the call direction: "incoming" or "outgoing". Note: this is not related to the SDP
+"a=" direction attribute.
 
 #### Call.state
 

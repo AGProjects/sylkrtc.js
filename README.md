@@ -205,6 +205,8 @@ Events emitted:
     * incoming: initial state for incoming calls
     * progress: initial state for outgoing calls
     * established: call media has been established
+* **dtmfToneSent**: emitted when one of the tones passed to `sendDtmf` is actually sent. An empty tone indicates all tones have
+  finished playing.
 
 #### Call.answer(options={})
 
@@ -225,6 +227,12 @@ Returns an array of *local* `RTCMediaStream` objects.
 #### Call.getRemoteStreams()
 
 Returns an array of *remote* `RTCMediaStream` objects.
+
+#### Call.sendDtmf(tones, duration=100, interToneGap=70)
+
+Sends the given DTMF tones over the active audio stream track.
+
+**Note**: This feature requires browser support for `RTCPeerConnection.createDTMFSender`.
 
 #### Call.account
 

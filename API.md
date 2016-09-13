@@ -20,12 +20,6 @@ Example:
     let connection = sylkrtc.createConnection({server: 'wss://1.2.3.4:8088/webrtcgateway/ws'});
 
 
-#### sylkrtc.debug
-
-[debug](https://github.com/visionmedia/debug) module, exposed.
-Used for debugging, with the 'sylkrtc' prefix.
-
-
 #### sylkrtc.closeMediaStream(stream)
 
 Helper function to close the given `stream`. When a local media stream is closed the camera is stopped in case it was

@@ -26,12 +26,6 @@ Example:
 Used for debugging, with the 'sylkrtc' prefix.
 
 
-#### sylkrtc.rtcninja
-
-[rtcninja](https://github.com/eface2face/rtcninja.js) module, exposed.
-Used for accessing WebRTC APIs and dealing with platform differences.
-
-
 #### sylkrtc.closeMediaStream(stream)
 
 Helper function to close the given `stream`. When a local media stream is closed the camera is stopped in case it was
@@ -400,6 +394,3 @@ Display name assiciated with the identity. Set to '' if absent.
 Function returning a string representation of the identity. It can take 2 forms
 depending on the availability of the display name: 'bob@biloxi.com' or
 'Bob <bob@biloxi.com>'.
-
-
-

@@ -110,6 +110,8 @@ Events emitted:
   present in the initial SDP.
 * **missedCall**: emitted when an incoming call is missed. A `data` object is provided, which contains an `originator`
   attribute, which is an `Identity` object.
+* **conferenceInvite**: emitted when someone invites us to join a conference. A `data` object is provided, which contains
+  an `originator` attribute indicating who invited us, and a `room` attribute indicating what conference we have been invited to.
 
 
 #### Account.register()

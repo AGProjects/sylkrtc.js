@@ -132,13 +132,12 @@ Unregister the account. Progress will be reported via the
 
 Start an outgoing call. Supported options:
 * pcConfig: configuration options for `RTCPeerConnection`. [Reference](http://w3c.github.io/webrtc-pc/#configuration).
-* mediaConstraints: constraints to be used when getting the local user media. [Reference](http://www.w3.org/TR/mediacapture-streams/#mediastreamconstraints).
 * offerOptions: `RTCOfferOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCOfferOptions).
-* localStream: if specified, it will be used by sylkrtc instead of using `getUserMedia`.
+* localStream: user provided local media stream (acquired with `getUserMedia` TODO).
 
 Example:
 
-    const call = account.call('3333@sip2sip.info', {mediaConstraints: {audio: true, video: false}});
+    const call = account.call('3333@sip2sip.info', {localStream: stream});
 
 
 #### Account.joinConference(uri, options={})
@@ -146,15 +145,12 @@ Example:
 Join (or create in case it doesn't exist) a multi-party video conference at the given URI. Supported options:
 
 * pcConfig: configuration options for `RTCPeerConnection`. [Reference](http://w3c.github.io/webrtc-pc/#configuration).
-* mediaConstraints: constraints to be used when getting the local user media. [Reference](http://www.w3.org/TR/mediacapture-streams/#mediastreamconstraints).
 * offerOptions: `RTCOfferOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCOfferOptions).
-* localStream: if specified, it will be used by sylkrtc instead of using `getUserMedia`.
-
-**NOTE**: Some of the `mediaConstraints` are ignored: audio and video are always requested.
+* localStream: user provided local media stream (acquired with `getUserMedia` TODO).
 
 Example:
 
-    const conf = account.joinConference('test123@conference.sip2sip.info');
+    const conf = account.joinConference('test123@conference.sip2sip.info', {localStream: stream});
 
 
 #### Account.id
@@ -200,9 +196,8 @@ Events emitted:
 
 Answer an incoming call. Supported options:
 * pcConfig: configuration options for `RTCPeerConnection`. [Reference](http://w3c.github.io/webrtc-pc/#configuration).
-* mediaConstraints: constraints to be used when getting the local user media. [Reference](http://www.w3.org/TR/mediacapture-streams/#mediastreamconstraints).
 * answerOptions: `RTCAnswerOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCAnswerOptions).
-* localStream: if specified, it will be used by sylkrtc instead of using `getUserMedia`.
+* localStream: user provided local media stream (acquired with `getUserMedia` TODO).
 
 
 #### Call.terminate()

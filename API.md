@@ -20,13 +20,12 @@ Example:
     let connection = sylkrtc.createConnection({server: 'wss://1.2.3.4:8088/webrtcgateway/ws'});
 
 
-#### sylkrtc.closeMediaStream(stream)
+#### sylkrtc.utils
 
-Helper function to close the given `stream`. When a local media stream is closed the camera is stopped in case it was
-active, for example.
+Helper module with utility functions.
 
-Note: when a `Call` is terminated all streams will be automatically closed.
-
+* `attachMediaStream`: function to easily attach a media stream to an element. It reexports [attachmediastream](https://github.com/otalk/attachMediaStream).
+* `closeMediaStream`: function to close the given media stream.
 
 ### Connection
 

@@ -172,6 +172,11 @@ Getter property returning the HA1 password for the account.
 getter property returning the current registration state.
 
 
+#### Account.setDeviceToken(oldToken, newTokenn)
+
+Set the current device token for this account.  The device token is an opaque string usually provided by the Firebase SDK
+which SylkServer can use to send push notifications.
+
 ### Call
 
 Object representing a audio/video call. Signalling is done using SIP underneath.

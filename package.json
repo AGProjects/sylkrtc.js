@@ -24,7 +24,7 @@
     "attachmediastream": "^1.4.2",
     "blueimp-md5": "^2.3.0",
     "bowser": "^1.7.0",
-    "debug": "^2.2.0",
+    "debug": "^2.6.8",
     "sdp-transform": "^1.6.2",
     "uuid": "^3.1.0",
     "webrtc-adapter": "^2.0.7",

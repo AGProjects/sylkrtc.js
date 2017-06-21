@@ -23,7 +23,7 @@
   "dependencies": {
     "attachmediastream": "^1.4.2",
     "blueimp-md5": "^2.3.0",
-    "bowser": "^1.4.1",
+    "bowser": "^1.7.0",
     "debug": "^2.2.0",
     "sdp-transform": "^1.6.2",
     "uuid": "^3.1.0",

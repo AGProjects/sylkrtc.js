@@ -38,7 +38,7 @@
     "gulp-filelog": "^0.4.1",
     "gulp-header": "^1.8.7",
     "gulp-jshint": "^2.0.1",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.4",

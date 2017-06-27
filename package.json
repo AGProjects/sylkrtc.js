@@ -21,7 +21,7 @@
     ]
   },
   "dependencies": {
-    "attachmediastream": "^1.4.2",
+    "attachmediastream": "^2.0.0",
     "blueimp-md5": "^2.3.0",
     "bowser": "^1.7.0",
     "debug": "^2.6.8",

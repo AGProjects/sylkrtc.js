@@ -169,7 +169,7 @@ Getter property returning the HA1 password for the account.
 
 #### Account.registrationState
 
-getter property returning the current registration state.
+Getter property returning the current registration state.
 
 
 #### Account.setDeviceToken(oldToken, newTokenn)
@@ -339,34 +339,34 @@ Events emitted:
 
 #### Participant.id
 
-    Getter property which returns the ID for this participant. Note this an abstract ID.
+Getter property which returns the ID for this participant. Note this an abstract ID.
 
 
 #### Participant.state
 
-    Getter property which returns the participant state.
+Getter property which returns the participant state.
 
 
 #### Participant.identity
 
-    Getter property which returns the participant's identity. (See the `Identity` object).
+Getter property which returns the participant's identity. (See the `Identity` object).
 
 
 #### Participant.streams
 
-    Getter property which returns the audio / video streams for this participant.
+Getter property which returns the audio / video streams for this participant.
 
 
 #### Participant.attach()
 
-    Start receiving audio / video from this participant. Once attached the participant's state will switch to 'established'
-    and its audio /video stream(s) will be available in `Participant.streams`. If a participant is not attached to, no
-    audio or video will be received from them.
+Start receiving audio / video from this participant. Once attached the participant's state will switch to 'established'
+and its audio /video stream(s) will be available in `Participant.streams`. If a participant is not attached to, no
+audio or video will be received from them.
 
 
 #### Participant.detach()
 
-    Stop receiving audio / video from this participant. The opposite of `Participant.attach()`.
+Stop receiving audio / video from this participant. The opposite of `Participant.attach()`.
 
 
 ### Identity

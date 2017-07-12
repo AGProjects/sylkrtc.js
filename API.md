@@ -67,7 +67,7 @@ Example:
 #### Connection.removeAccount(account, cb=null)
 
 Removes the given account. The callback will be called once the operation completes (it
-cannot fail). The callback will have an error if there was one.
+cannot fail). The callback will be called with an error object.
 
 Example:
 

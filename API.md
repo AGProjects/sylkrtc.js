@@ -287,6 +287,11 @@ Returns an array of *local* `RTCMediaStream` objects. These are the streams bein
 Returns an array of *remote* `RTCMediaStream` objects. These are the streams published by all other participants in the conference.
 
 
+#### Conference.scaleLocalTrack(track, divider)
+
+Scale the given local video track by a given divider. Currently this function will not work, since browser support is lacking.
+
+
 #### Conference.participants
 
 Getter property which returns an array of `Participant` objects in the conference.

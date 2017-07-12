@@ -67,11 +67,11 @@ Example:
 #### Connection.removeAccount(account, cb=null)
 
 Removes the given account. The callback will be called once the operation completes (it
-cannot fail).
+cannot fail). The callback will have an error if there was one.
 
 Example:
 
-    connection.removeAccount(account, function() {
+    connection.removeAccount(account, function(error) {
         console('Account removed!');
     });
 

@@ -357,6 +357,11 @@ Getter property which returns the participant's identity. (See the `Identity` ob
 Getter property which returns the audio / video streams for this participant.
 
 
+#### Participant.videoPaused
+
+Getter property which returns true / false when the video subscription is paused / not paused
+
+
 #### Participant.attach()
 
 Start receiving audio / video from this participant. Once attached the participant's state will switch to 'established'
@@ -367,6 +372,16 @@ audio or video will be received from them.
 #### Participant.detach()
 
 Stop receiving audio / video from this participant. The opposite of `Participant.attach()`.
+
+
+#### Participant.pauseVideo()
+
+Stop receiving video from this participant. The opposite of `Participant.resumeVideo()`.
+
+
+#### Participant.resumeVideo()
+
+Resume receiving video from this participant. The opposite of `Participant.pauseVideo()`.
 
 
 ### Identity

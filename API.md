@@ -356,9 +356,11 @@ Getter property which returns the participant state.
 
 Getter property which returns the participant's identity. (See the `Identity` object).
 
+
 #### Participant.publisherId
 
 Getter property which returns the participant's publisher session id.
+
 
 #### Participant.streams
 

@@ -276,6 +276,9 @@ Events emitted:
   upon the initial join to check what participants are already in the conference.
 * **participantLeft**: emitted when a participant leaves the conference. A single argument is provided: an instance of
   `Participant`.
+* **roomConfigured**: emitted when the room is configured by the server. A single argument is provided: an object with the
+  `originator` of the message which is an `Identity` or string and a list of `activeParticipants`. The list contains
+  instances of `Participant`.
 
 #### Conference.getLocalStreams()
 
@@ -292,9 +295,22 @@ Returns an array of *remote* `RTCMediaStream` objects. These are the streams pub
 Scale the given local video track by a given divider. Currently this function will not work, since browser support is lacking.
 
 
+#### Conference.configureRoom(participants, cb=null)
+
+Configure the room. `Participants` is a list with the publisher session ids of the new active participants. The active participants
+will get more bandwidth and the other participants will get a limited bandwidth. On success the *roomConfigured* event is emitted.
+
+The `cb` argument is a callback which will be called on an error with error as argument.
+
+
 #### Conference.participants
 
 Getter property which returns an array of `Participant` objects in the conference.
+
+
+#### Conference.activeParticipants
+
+Getter property for the Active Participants which returns an array of `Participant` objects in the conference.
 
 
 #### Conference.account

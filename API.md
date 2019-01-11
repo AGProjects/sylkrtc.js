@@ -395,9 +395,11 @@ and its audio /video stream(s) will be available in `Participant.streams`. If a 
 audio or video will be received from them.
 
 
-#### Participant.detach()
+#### Participant.detach(isRemoved=false)
 
-Stop receiving audio / video from this participant. The opposite of `Participant.attach()`.
+Stop receiving audio / video from this participant. The opposite of `Participant.attach()`. The isRemoved
+option needs to be true used when the participant has already left. This is the case when you receive the
+'participantLeft' event.
 
 
 #### Participant.pauseVideo()

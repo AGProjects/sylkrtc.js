@@ -219,6 +219,16 @@ Returns an array of *local* `RTCMediaStream` objects.
 Returns an array of *remote* `RTCMediaStream` objects.
 
 
+#### Call.getSenders()
+
+Returns an array of `RTCRtpSender` objects.
+
+
+#### Call.getReceivers()
+
+Returns an array of `RTCRtpReceiver` objects.
+
+
 #### Call.sendDtmf(tones, duration=100, interToneGap=70)
 
 Sends the given DTMF tones over the active audio stream track.
@@ -288,6 +298,17 @@ Returns an array of *local* `RTCMediaStream` objects. These are the streams bein
 #### Conference.getRemoteStreams()
 
 Returns an array of *remote* `RTCMediaStream` objects. These are the streams published by all other participants in the conference.
+
+
+#### Conference.getSenders()
+
+Returns an array of `RTCRtpSender` objects. The sender objects get the *local* tracks being published to the conference.
+
+
+#### Conference.getReceivers()
+
+Returns an array of `RTCRtpReceiver` objects. The receiver objects get the *remote* tracks published by all other
+participants in the conference.
 
 
 #### Conference.scaleLocalTrack(track, divider)
@@ -386,6 +407,12 @@ Getter property which returns the audio / video streams for this participant.
 #### Participant.videoPaused
 
 Getter property which returns true / false when the video subscription is paused / not paused
+
+
+#### Participant.getReceivers()
+
+Returns an array of `RTCRtpReceiver` objects. The receiver objects get the *remote* tracks published by the
+participant.
 
 
 #### Participant.attach()

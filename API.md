@@ -267,6 +267,11 @@ Getter property which returns the local identity. (See the `Identity` object).
 Getter property which returns the remote identity. (See the `Identity` object).
 
 
+#### Call.remoteMediaDirections
+
+Getter property which returns an object with the directions of the remote streams. Note: this **is** related to the SDP "a=" direction attribute.
+
+
 ### Conference
 
 Object representing a multi-party audio/video conference.

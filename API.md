@@ -203,10 +203,23 @@ Answer an incoming call. Supported options:
 * answerOptions: `RTCAnswerOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCAnswerOptions).
 * localStream: user provided local media stream (acquired with `getUserMedia` TODO).
 
+
+### Call.startScreensharing(newTrack)
+
+Start sharing a screen/window. `newTrack` should be a `RTCMediaStreamTrack` containing the screen/window. Internally it will call
+replace track with the keep flag enabled and it will set the state so it can be tracked.
+
+
+### Call.stopScreensharing()
+
+Stop sharing a screen/window and restore the previousTrack.
+
+
 ### Call.replaceTrack(oldTrack, newTrack, keep=false)
 
 Replace a local track inside a call. If the keep flag is set, it will store the replaced track internally so it
 can be used later.
+
 
 #### Call.terminate()
 
@@ -248,6 +261,11 @@ Getter property which returns the `Account` object associated with this call.
 #### Call.id
 
 Getter property which returns the ID for this call. Note: this is not related to the SIP Call-ID header.
+
+
+#### Call.sharingScreen
+
+Getter property which returns the screen sharing state.
 
 
 #### Call.direction
@@ -298,6 +316,18 @@ Events emitted:
 * **roomConfigured**: emitted when the room is configured by the server. A single argument is provided: an object with the
   `originator` of the message which is an `Identity` or string and a list of `activeParticipants`. The list contains
   instances of `Participant`.
+
+
+### Conference.startScreensharing(newTrack)
+
+Start sharing a screen/window. `newTrack` should be a `RTCMediaStreamTrack` containing the screen/window. Internally it will call
+replace track with the keep flag enabled and it will set the state so it can be tracked.
+
+
+### Conference.stopScreensharing()
+
+Stop sharing a screen/window and restore the previousTrack.
+
 
 ### Conference.replaceTrack(oldTrack, newTrack, keep=false)
 
@@ -356,6 +386,11 @@ Getter property which returns the `Account` object associated with this conferen
 #### Conference.id
 
 Getter property which returns the ID for this conference. Note: this is not related to the URI.
+
+
+#### Conference.sharingScreen
+
+Getter property which returns the screen sharing state.
 
 
 #### Conference.direction

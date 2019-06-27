@@ -203,6 +203,10 @@ Answer an incoming call. Supported options:
 * answerOptions: `RTCAnswerOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCAnswerOptions).
 * localStream: user provided local media stream (acquired with `getUserMedia` TODO).
 
+### Call.replaceTrack(oldTrack, newTrack, keep=false)
+
+Replace a local track inside a call. If the keep flag is set, it will store the replaced track internally so it
+can be used later.
 
 #### Call.terminate()
 
@@ -294,6 +298,11 @@ Events emitted:
 * **roomConfigured**: emitted when the room is configured by the server. A single argument is provided: an object with the
   `originator` of the message which is an `Identity` or string and a list of `activeParticipants`. The list contains
   instances of `Participant`.
+
+### Conference.replaceTrack(oldTrack, newTrack, keep=false)
+
+Replace a local track inside the conference. If the keep flag is set, it will store the replaced track internally so it
+can be used later.
 
 #### Conference.getLocalStreams()
 

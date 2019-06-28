@@ -215,10 +215,10 @@ replace track with the keep flag enabled and it will set the state so it can be 
 Stop sharing a screen/window and restore the previousTrack.
 
 
-#### Call.replaceTrack(oldTrack, newTrack, keep=false)
+#### Call.replaceTrack(oldTrack, newTrack, keep=false, cb=null)
 
 Replace a local track inside a call. If the keep flag is set, it will store the replaced track internally so it
-can be used later.
+can be used later. The callback will be called  with a true value once the operation completes.
 
 
 #### Call.terminate()
@@ -329,10 +329,11 @@ replace track with the keep flag enabled and it will set the state so it can be 
 Stop sharing a screen/window and restore the previousTrack.
 
 
-#### Conference.replaceTrack(oldTrack, newTrack, keep=false)
+#### Conference.replaceTrack(oldTrack, newTrack, keep=false, cb=null)
 
 Replace a local track inside the conference. If the keep flag is set, it will store the replaced track internally so it
-can be used later.
+can be used later. The callback will be called  with a true value once the operation completes.
+
 
 #### Conference.getLocalStreams()
 

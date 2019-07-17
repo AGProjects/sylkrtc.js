@@ -6,9 +6,10 @@ WebRTC gateway application.
 
 This client library can be used for creating Web applications with the following features:
 
-* Audio / Video calls
-* Interoperability with SIP endpoints
-* Multi-party video conferencing
+* Audio and video sessions
+* Screen sharing
+* Multi-party conferencing
+* SIP interoperability
 
 
 ## Building

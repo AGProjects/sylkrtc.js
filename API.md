@@ -316,6 +316,7 @@ Events emitted:
 * **roomConfigured**: emitted when the room is configured by the server. A single argument is provided: an object with the
   `originator` of the message which is an `Identity` or string and a list of `activeParticipants`. The list contains
   instances of `Participant`.
+* **fileSharing**: emitted when a participant in the room shares files. A single argument is provided: a list of instances of `SharedFile`.
 
 
 #### Conference.startScreensharing(newTrack)
@@ -377,6 +378,11 @@ Getter property which returns an array of `Participant` objects in the conferenc
 #### Conference.activeParticipants
 
 Getter property for the Active Participants which returns an array of `Participant` objects in the conference.
+
+
+#### Conference.sharedFiles
+
+Getter property for the Shared Files which returns an array of `SharedFile` objects in the conference.
 
 
 #### Conference.account
@@ -509,3 +515,23 @@ Display name assiciated with the identity. Set to '' if absent.
 Function returning a string representation of the identity. It can take 2 forms
 depending on the availability of the display name: 'bob@biloxi.com' or
 'Bob <bob@biloxi.com>'.
+
+
+### SharedFile
+
+Object representing a shared file.
+
+
+### SharedFile.uploader
+
+The `Identity` of the uploader.
+
+
+### SharedFile.uploaderSession
+
+The session UUID which was used to upload the file
+
+
+### SharedFile.filename
+
+The filename of the shared file

@@ -522,16 +522,22 @@ depending on the availability of the display name: 'bob@biloxi.com' or
 Object representing a shared file.
 
 
+#### SharedFile.filename
+
+The filename of the shared file
+
+
+#### SharedFile.filesize
+
+The filesize in bytes of the shared file
+
+
 #### SharedFile.uploader
 
 The `Identity` of the uploader.
 
 
-#### SharedFile.uploaderSession
+#### SharedFile.session
 
 The session UUID which was used to upload the file
 
-
-#### SharedFile.filename
-
-The filename of the shared file

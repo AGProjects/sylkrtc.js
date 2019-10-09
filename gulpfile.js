@@ -8,11 +8,11 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var uglify = require('gulp-uglify');
-var gutil = require('gulp-util');
 var filelog = require('gulp-filelog');
 var header = require('gulp-header');
 var sourcemaps = require('gulp-sourcemaps');
-
+var through = require('through2');
+var parseArgs = require('minimist');
 var fs = require('fs');
 var path = require('path');
 
@@ -25,6 +25,11 @@ var BANNER_OPTS = {
     currentYear: (new Date()).getFullYear()
 };
 
+var noop = function() {
+    return through.obj();
+}
+
+var env = parseArgs(process.argv.slice(2));
 
 gulp.task('lint', function () {
     return gulp.src('lib/**/*.js')
@@ -36,7 +41,7 @@ gulp.task('lint', function () {
 
 gulp.task('build', function () {
     var dest;
-    var isProduction = (gutil.env.type === 'production');
+    var isProduction = (env.type === 'production');
     if (isProduction) {
         dest = PKG_INFO.name + '.min.js';
     } else {
@@ -51,7 +56,7 @@ gulp.task('build', function () {
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(filelog('build'))
-        .pipe(isProduction ? uglify({mangle: false}) : gutil.noop())
+        .pipe(isProduction ? uglify({mangle: false}) : noop())
         .pipe(header(BANNER, BANNER_OPTS))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/'));

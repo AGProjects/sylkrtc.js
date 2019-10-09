@@ -40,9 +40,10 @@
     "gulp-jshint": "^2.0.1",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.7",
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.0",
+    "minimist": "^1.2.0",
+    "through2": "^3.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^2.0.0"
   }

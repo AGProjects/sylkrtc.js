@@ -9,6 +9,7 @@ This client library can be used for creating Web applications with the following
 * Audio and video sessions
 * Screen sharing
 * Multi-party conferencing
+* File sharing in conferences
 * SIP interoperability
 
 

@@ -318,7 +318,10 @@ Events emitted:
   `originator` of the message which is an `Identity` or string and a list of `activeParticipants`. The list contains
   instances of `Participant`.
 * **fileSharing**: emitted when a participant in the room shares files. A single argument is provided: a list of instances of `SharedFile`.
-
+* **message**: emitted when a message is received. A single argument is provided, an instance of `Message`.
+* **sendingMessage**: emitted when a message will be sent. A single argument is provided, an instance of `Message`.
+* **composing-indication**: emitted when somebody in the room is typing. A single argument is provided, an object with `refresh`, `sender`
+  and `state`. The `sender` is an `Identity`.
 
 #### Conference.startScreensharing(newTrack)
 
@@ -329,6 +332,17 @@ replace track with the keep flag enabled and it will set the state so it can be 
 #### Conference.stopScreensharing()
 
 Stop sharing a screen/window and restore the previousTrack.
+
+
+#### Conference.sendMessage(message, type)
+
+Send a chat message to the conference. `message` should contain a string, `type` should contain the message content type like
+'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
+
+
+#### Conference.sendIsComposing(state)
+
+Send a composing indication to the conference. `state` should be either `active` or `idle`.
 
 
 #### Conference.replaceTrack(oldTrack, newTrack, keep=false, cb=null)
@@ -384,6 +398,11 @@ Getter property for the Active Participants which returns an array of `Participa
 #### Conference.sharedFiles
 
 Getter property for the Shared Files which returns an array of `SharedFile` objects in the conference.
+
+
+#### Conference.messages
+
+Getter property for the Messages which returns an array of `Message` objects in the conference.
 
 
 #### Conference.account
@@ -541,4 +560,52 @@ The `Identity` of the uploader.
 #### SharedFile.session
 
 The session UUID which was used to upload the file
+
+
+### Message
+
+Object representing a message.
+
+Events emitted:
+* **stateChanged**: indicates the message state has changed. Two arguments are provided: `oldState`, `newState`.
+  `oldState` and `newState` indicate the previous and current state respectively. Possible states:
+    * received: the message was received
+    * pending: the message is pending delivery
+    * delivered: the message has been delivered
+    * failed: something went wrong, either it is not delivered, or it could not be sent
+
+
+#### Message.id
+
+Getter property for id the message
+
+
+#### Message.content
+
+Getter property for the content of the message. In case content type of the message is 'text/html', it will be sanatized.
+
+
+#### Message.content
+
+Getter property for the content type of the message.
+
+
+#### Message.sender
+
+Getter property for the `Identity` of the message sender.
+
+
+#### Message.timestamp
+
+Getter property for the `Date` object of the message.
+
+
+#### Message.type
+
+Getter property for the type of the message, it can be `normal` or `status`.
+
+
+#### Message.state
+
+Getter property for the state of the message. It can be `received`, `pending`, `delivered`, `failed`.
 

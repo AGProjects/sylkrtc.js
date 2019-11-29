@@ -320,7 +320,7 @@ Events emitted:
 * **fileSharing**: emitted when a participant in the room shares files. A single argument is provided: a list of instances of `SharedFile`.
 * **message**: emitted when a message is received. A single argument is provided, an instance of `Message`.
 * **sendingMessage**: emitted when a message will be sent. A single argument is provided, an instance of `Message`.
-* **composing-indication**: emitted when somebody in the room is typing. A single argument is provided, an object with `refresh`, `sender`
+* **composingIndication**: emitted when somebody in the room is typing. A single argument is provided, an object with `refresh`, `sender`
   and `state`. The `sender` is an `Identity`.
 
 #### Conference.startScreensharing(newTrack)

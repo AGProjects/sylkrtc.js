@@ -10,6 +10,7 @@ This client library can be used for creating Web applications with the following
 * Screen sharing
 * Multi-party conferencing
 * File sharing in conferences
+* Chat in conferences
 * SIP interoperability
 
 

@@ -340,7 +340,7 @@ Send a chat message to the conference. `message` should contain a string, `type`
 'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
 
 
-#### Conference.sendIsComposing(state)
+#### Conference.sendComposing(state)
 
 Send a composing indication to the conference. `state` should be either `active` or `idle`.
 

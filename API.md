@@ -322,6 +322,7 @@ Events emitted:
 * **sendingMessage**: emitted when a message will be sent. A single argument is provided, an instance of `Message`.
 * **composingIndication**: emitted when somebody in the room is typing. A single argument is provided, an object with `refresh`, `sender`
   and `state`. The `sender` is an `Identity`.
+* **muteAudio**: emitted when a participant requests to `muteAudioParticipants`.
 
 #### Conference.startScreensharing(newTrack)
 
@@ -383,6 +384,11 @@ Configure the room. `Participants` is a list with the publisher session ids of t
 will get more bandwidth and the other participants will get a limited bandwidth. On success the *roomConfigured* event is emitted.
 
 The `cb` argument is a callback which will be called on an error with error as argument.
+
+
+#### Conference.muteAudioParticipants()
+
+Request muting for all participants. All participants in the room will get a `muteAudio` event from the server.
 
 
 #### Conference.participants

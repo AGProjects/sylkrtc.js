@@ -322,7 +322,9 @@ Events emitted:
 * **sendingMessage**: emitted when a message will be sent. A single argument is provided, an instance of `Message`.
 * **composingIndication**: emitted when somebody in the room is typing. A single argument is provided, an object with `refresh`, `sender`
   and `state`. The `sender` is an `Identity`.
-* **muteAudio**: emitted when a participant requests to `muteAudioParticipants`.
+* **muteAudio**: emitted when a `Participant` requests to `muteAudioParticipants`.
+* **raisedHands**: emitted when a `Participant` raises or lower his hand. A single argument is provided: a list of `raisedHands`.
+  The list contains instances of `Participant`.
 
 #### Conference.startScreensharing(newTrack)
 
@@ -391,6 +393,12 @@ The `cb` argument is a callback which will be called on an error with error as a
 Request muting for all participants. All participants in the room will get a `muteAudio` event from the server.
 
 
+#### Conference.toggleHand(participantSession)
+
+Raise/Lower your hand. An optional participant session can be provided, so the hand of this specific session is raised/lowered.
+Calling this function will trigger a `raisedHands` event to all participants in the room.
+
+
 #### Conference.participants
 
 Getter property which returns an array of `Participant` objects in the conference.
@@ -409,6 +417,11 @@ Getter property for the Shared Files which returns an array of `SharedFile` obje
 #### Conference.messages
 
 Getter property for the Messages which returns an array of `Message` objects in the conference.
+
+
+#### Conference.raisedHands
+
+Getter property for the Raised Hands which returns an array of `Participant` objects.
 
 
 #### Conference.account

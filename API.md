@@ -173,10 +173,12 @@ Getter property returning the HA1 password for the account.
 Getter property returning the current registration state.
 
 
-#### Account.setDeviceToken(oldToken, newToken)
+#### Account.setDeviceToken(token, platform, device, silent, app)
 
-Set the current device token for this account.  The device token is an opaque string usually provided by the Firebase SDK
-which SylkServer can use to send push notifications.
+Set the current device token for this account. The device token is an opaque string usually provided by the Firebase SDK
+which SylkServer will inject with the other parameters as parameters into to contact header when a SIP account is registered.
+The parameter `silent` must be a boolean and all other parameters should be strings.
+
 
 ### Call
 

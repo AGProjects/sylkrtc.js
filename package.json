@@ -25,7 +25,7 @@
     "blueimp-md5": "^2.13.0",
     "bowser": "^2.7.0",
     "debug": "^2.6.8",
-    "dompurify": "^2.0.7",
+    "dompurify": "^2.0.10",
     "sdp-transform": "^2.3.0",
     "uuid": "^7.0.3",
     "webrtc-adapter": "4.1.1",

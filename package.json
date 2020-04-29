@@ -28,7 +28,7 @@
     "dompurify": "^2.0.10",
     "sdp-transform": "^2.3.0",
     "uuid": "^7.0.3",
-    "webrtc-adapter": "4.1.1",
+    "webrtc-adapter": "^4.2.2",
     "websocket": "^1.0.28"
   },
   "devDependencies": {

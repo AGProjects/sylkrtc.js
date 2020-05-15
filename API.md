@@ -11,13 +11,21 @@ The main entrypoint to the library. It exposes the main function to connect to S
 
 #### sylkrtc.createConnection(options={})
 
-Creates a `sylkrtc` connection towards a SylkServer instance. The only supported option (at the moment) is "server", which should point to the WebSocket endpoint of the WebRTC gateway application. Example: `wss://1.2.3.4:8088/webrtcgateway/ws`.
+Creates a `sylkrtc` connection towards a SylkServer instance. The supported options are "server" and optional object "userAgent". Where server should point to the WebSocket endpoint of the WebRTC gateway application. Example: `wss://1.2.3.4:8088/webrtcgateway/ws`.
 
 It returns a `Connection` object.
 
 Example:
 
     let connection = sylkrtc.createConnection({server: 'wss://1.2.3.4:8088/webrtcgateway/ws'});
+
+If the optional userAgent object is given, it should contain:
+* `name` : string with the name of the application.
+* `version`: version string of the application.
+
+Example with userAgent:
+
+    let connection = sylkrtc.createConnection({server: 'wss://1.2.3.4:8088/webrtcgateway/ws', userAgent: {name: 'Some Apllication', version: '0.99.9'}});
 
 
 #### sylkrtc.utils

@@ -274,6 +274,11 @@ Getter property which returns the `Account` object associated with this call.
 Getter property which returns the ID for this call. Note: this is not related to the SIP Call-ID header.
 
 
+#### Call.callId
+
+Getter property which returns the call-id for this call. Note: this **is** the SIP Call-ID.
+
+
 #### Call.sharingScreen
 
 Getter property which returns the screen sharing state.

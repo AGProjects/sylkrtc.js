@@ -202,7 +202,8 @@ Events emitted:
     * accepted: the call has been accepted (either locally or remotely)
     * incoming: initial state for incoming calls
     * progress: initial state for outgoing calls
-    * established: call media has been established
+    * early-media: the call has an session description before it is accepted
+    * established: call media has been established, in case of early media this happens before accepted
 * **dtmfToneSent**: emitted when one of the tones passed to `sendDtmf` is actually sent. An empty tone indicates all tones have
   finished playing.
 

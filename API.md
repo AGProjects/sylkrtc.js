@@ -155,6 +155,10 @@ Join (or create in case it doesn't exist) a multi-party video conference at the 
 * pcConfig: configuration options for `RTCPeerConnection`. [Reference](http://w3c.github.io/webrtc-pc/#configuration).
 * offerOptions: `RTCOfferOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCOfferOptions).
 * localStream: user provided local media stream (acquired with `getUserMedia` TODO).
+* audio: optional boolean parameter to tell the server it should support audio. Note: this is only used if you are creating
+  the conference.
+* video: optional boolean parameter to tell the server it should support video. Note: this is only used if you are creating
+  the conference.
 
 Example:
 
@@ -473,6 +477,16 @@ Getter property which returns the local identity. (See the `Identity` object). T
 #### Conference.remoteIdentity
 
 Getter property which returns the remote identity. (See the `Identity` object). This will always be built from the remote URI.
+
+
+#### Conference.supportsAudio
+
+Getter property which returns if audio relaying/offer is supported by the server.
+
+
+#### Conference.supportsVideo
+
+Getter property which returns if video relaying/offer is supported by the server.
 
 
 ### Participant

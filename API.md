@@ -634,7 +634,7 @@ Getter property for id the message
 Getter property for the content of the message. In case content type of the message is 'text/html', it will be sanatized.
 
 
-#### Message.content
+#### Message.contentType
 
 Getter property for the content type of the message.
 

@@ -203,7 +203,7 @@ Send a (SIP) message to uri. The message will be send with IMDN enabled. `messag
 'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
 
 
-### Account.sendDispositionNotification(uri, id, timestamp, state) *WIP*
+#### Account.sendDispositionNotification(uri, id, timestamp, state) *WIP*
 
 Send a disposition notification to uri. `id` should contain the original
 message id, `timestamp` should contain the original timestamp, `state` should

@@ -120,7 +120,7 @@ Events emitted:
   attribute, which is an `Identity` object.
 * **conferenceInvite**: emitted when someone invites us to join a conference. A `data` object is provided, which contains
   an `originator` attribute indicating who invited us, and a `room` attribute indicating what conference we have been invited to.
-
+* **message**: emitted when a message is received. A single argument is provided: the `Message` object.
 
 #### Account.register()
 
@@ -185,11 +185,30 @@ Getter property returning the HA1 password for the account.
 Getter property returning the current registration state.
 
 
+#### Account.messages *WIP*
+
+Getter property returning the messages.
+
+
 #### Account.setDeviceToken(token, platform, device, silent, app)
 
 Set the current device token for this account. The device token is an opaque string usually provided by the Firebase SDK
 which SylkServer will inject with the other parameters as parameters into to contact header when a SIP account is registered.
 The parameter `silent` must be a boolean and all other parameters should be strings.
+
+
+#### Account.sendMessage(uri, message, contentType) *WIP*
+
+Send a (SIP) message to uri. The message will be send with IMDN enabled. `message` should contain a string, `type` should contain the message content type like
+'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
+
+
+### Account.sendDispositionNotification(uri, id, timestamp, state) *WIP*
+
+Send a disposition notification to uri. `id` should contain the original
+message id, `timestamp` should contain the original timestamp, `state` should
+contain the IMDN state you want to send. `delivered` will be sent automatically if
+the received messages requested `positive-delivery` disposition.
 
 
 ### Call
@@ -620,7 +639,9 @@ Events emitted:
   `oldState` and `newState` indicate the previous and current state respectively. Possible states:
     * received: the message was received
     * pending: the message is pending delivery
-    * delivered: the message has been delivered
+    * delivered: the message has been delivered, for direct messages it means an IMDN `delivered` was received
+    * accepted: only valid in direct messages, the message was accepted for delivery
+    * diplayed: only valid in direct messages, the message was displayed, an IMDN `dsiplay` was received
     * failed: something went wrong, either it is not delivered, or it could not be sent
 
 
@@ -656,5 +677,5 @@ Getter property for the type of the message, it can be `normal` or `status`.
 
 #### Message.state
 
-Getter property for the state of the message. It can be `received`, `pending`, `delivered`, `failed`.
+Getter property for the state of the message. It can be `received`, `pending`, `delivered`, `failed`, `accepted`, `displayed`.
 

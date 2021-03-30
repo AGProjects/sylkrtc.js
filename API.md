@@ -665,6 +665,11 @@ Getter property for the content type of the message.
 Getter property for the `Identity` of the message sender.
 
 
+#### Message.receiver
+
+Getter property for the uri of the message receiver.
+
+
 #### Message.timestamp
 
 Getter property for the `Date` object of the message.

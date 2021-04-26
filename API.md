@@ -121,6 +121,9 @@ Events emitted:
 * **conferenceInvite**: emitted when someone invites us to join a conference. A `data` object is provided, which contains
   an `originator` attribute indicating who invited us, and a `room` attribute indicating what conference we have been invited to.
 * **message**: emitted when a message is received. A single argument is provided: the `Message` object.
+* **messageStateChanged**: emitted when a message state has changed. A single argument is provided, an object which contains:
+    * `messageId`
+    * `state`
 
 #### Account.register()
 

@@ -641,7 +641,7 @@ Events emitted:
     * pending: the message is pending delivery
     * delivered: the message has been delivered, for direct messages it means an IMDN `delivered` was received
     * accepted: only valid in direct messages, the message was accepted for delivery
-    * diplayed: only valid in direct messages, the message was displayed, an IMDN `dsiplay` was received
+    * displayed: only valid in direct messages, the message was displayed, an IMDN `display` was received
     * failed: something went wrong, either it is not delivered, or it could not be sent
 
 

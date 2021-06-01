@@ -29,7 +29,7 @@
     "sdp-transform": "^2.3.0",
     "uuid": "^7.0.3",
     "webrtc-adapter": "^6.4.8",
-    "websocket": "^1.0.28"
+    "websocket": "^1.0.34"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

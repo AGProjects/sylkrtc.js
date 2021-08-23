@@ -240,7 +240,7 @@ message id, `timestamp` should contain the original timestamp, `state` should
 contain the IMDN state you want to send. `delivered` will be sent automatically if
 the received messages requested `positive-delivery` disposition.
 
-The `cb` argument is a callback which will be called on an error with error as argument.
+An optional callback can be given, which will be called with an error if there was one.
 
 
 #### Account.syncConversations(id=null) *WIP*

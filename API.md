@@ -124,6 +124,33 @@ Events emitted:
 * **messageStateChanged**: emitted when a message state has changed. A single argument is provided, an object which contains:
     * `messageId`
     * `state`
+* **sendingMessage**: emitted when sending a message. A single argument is provided which is the `message` object which is sent.
+* **sendingDispositionNotification**: emitted when sending a disposition notification. Multiple arguments are provided. The `id`, `state` and `error`. 
+  The `error` can be null
+* **syncConversations**: emitted when the syncConversations function has
+  results. A single argument is provided: a list of `messages`. Each `message`
+  has the following fields:
+    * contact: contact of the message. For outgoing messages it is the receiver, for incoming it is the sender.
+    * content: message content,
+    * content_type: message content type. Special content types exist to handle events:
+        * message/imdn: the content field will contain the message_id,
+          message_timestamp and state for the disposition change.
+        * application/sylk-message-remove: the content will contain the contact
+          and message_id fields for the message that needs to be removed.
+        * application/sylk-conversation-remove: the contact/content will contain the uri of the contact that
+          needs to be removed.
+    * direction: direction of the message, can be 'outgoing' or 'incoming'
+    * disposition: the disposition notification requested on the message
+    * message_id: message id
+    * state: message state
+    * timestamp: message timestamp
+* **addNessage**: emitted when an other device sends a message to a contact. The argument will be a `message` object.
+  Please note that a `sendingMessage` event is also emitted.
+* **removeMessage**: emitted when an other device removes a message. The argument will be a `message` object.
+* **removeConversation**: emitted when an other device removes a conversation.
+  The argument is the contact for which the conversation needs to be removed.
+
+
 
 #### Account.register()
 
@@ -214,6 +241,24 @@ contain the IMDN state you want to send. `delivered` will be sent automatically 
 the received messages requested `positive-delivery` disposition.
 
 The `cb` argument is a callback which will be called on an error with error as argument.
+
+
+#### Account.syncConversations(id=null) *WIP*
+
+Send a sync conversations request starting from `id`. The `id` can contain the
+last '`messageId` received. If the `id` argument is omitted, **all** stored
+'events' will be returned.
+
+
+#### Account.removeMessage(id) *WIP*
+
+Removes a message with `id` from the (local) account object and server. If you have other devices online, they will get a `removeMessage` event.
+
+
+#### Account.removeConversation(uri) *WIP*
+
+Removes all messages from and to  `uri` from the (local) account object and server. If you have other devices online, they will get a `removeConversation` event.
+
 
 ### Call
 

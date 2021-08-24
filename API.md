@@ -128,22 +128,14 @@ Events emitted:
 * **sendingDispositionNotification**: emitted when sending a disposition notification. Multiple arguments are provided. The `id`, `state` and `error`. 
   The `error` can be null
 * **syncConversations**: emitted when the syncConversations function has
-  results. A single argument is provided: a list of `messages`. Each `message`
-  has the following fields:
-    * contact: contact of the message. For outgoing messages it is the receiver, for incoming it is the sender.
-    * content: message content,
-    * content_type: message content type. Special content types exist to handle events:
-        * message/imdn: the content field will contain the message_id,
-          message_timestamp and state for the disposition change.
-        * application/sylk-message-remove: the content will contain the contact
-          and message_id fields for the message that needs to be removed.
-        * application/sylk-conversation-remove: the contact/content will contain the uri of the contact that
-          needs to be removed.
-    * direction: direction of the message, can be 'outgoing' or 'incoming'
-    * disposition: the disposition notification requested on the message
-    * message_id: message id
-    * state: message state
-    * timestamp: message timestamp
+  results. A single argument is provided: a list of `Message` objects. Each `Message`
+  has same fields as a normal message. There are some 'special' content types used for replication events:
+    * message/imdn: the content field will contain the message_id,
+      message_timestamp and state for the disposition change.
+    * application/sylk-message-remove: the content will contain the contact
+      and message_id fields for the message that needs to be removed.
+    * application/sylk-conversation-remove: the contact/content will contain the uri of the contact that
+      needs to be removed.
 
 Events emitted for message synchronisation between devices with the same account:
 * **outgoingMessage**: emitted when a different device sends a message to a contact. The argument will be a `message` object.

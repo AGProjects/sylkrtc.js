@@ -120,7 +120,7 @@ Events emitted:
   attribute, which is an `Identity` object.
 * **conferenceInvite**: emitted when someone invites us to join a conference. A `data` object is provided, which contains
   an `originator` attribute indicating who invited us, and a `room` attribute indicating what conference we have been invited to.
-* **message**: emitted when a message is received. A single argument is provided: the `Message` object.
+* **incomingMessage**: emitted when a message is received. A single argument is provided: the `Message` object.
 * **messageStateChanged**: emitted when a message state has changed. A single argument is provided, an object which contains:
     * `messageId`
     * `state`
@@ -146,7 +146,7 @@ Events emitted:
     * timestamp: message timestamp
 
 Events emitted for message synchronisation between devices with the same account:
-* **addMessage**: emitted when a different device sends a message to a contact. The argument will be a `message` object.
+* **outgoingMessage**: emitted when a different device sends a message to a contact. The argument will be a `message` object.
   Please note that a `sendingMessage` event is also emitted.
 * **removeMessage**: emitted when a different device removes a message. The argument will be a `message` object.
 * **removeConversation**: emitted when a different device removes a conversation.

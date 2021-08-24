@@ -144,10 +144,12 @@ Events emitted:
     * message_id: message id
     * state: message state
     * timestamp: message timestamp
-* **addNessage**: emitted when an other device sends a message to a contact. The argument will be a `message` object.
+
+Events emitted for message synchronisation between devices with the same account:
+* **addMessage**: emitted when a different device sends a message to a contact. The argument will be a `message` object.
   Please note that a `sendingMessage` event is also emitted.
-* **removeMessage**: emitted when an other device removes a message. The argument will be a `message` object.
-* **removeConversation**: emitted when an other device removes a conversation.
+* **removeMessage**: emitted when a different device removes a message. The argument will be a `message` object.
+* **removeConversation**: emitted when a different device removes a conversation.
   The argument is the contact for which the conversation needs to be removed.
 
 
@@ -229,7 +231,7 @@ The parameter `silent` must be a boolean and all other parameters should be stri
 
 #### Account.sendMessage(uri, message, contentType) *WIP*
 
-Send a (SIP) message to uri. The message will be send with IMDN enabled. `message` should contain a string, `type` should contain the message content type like
+Send a message to (SIP) uri. The message will be send with IMDN enabled. `message` should contain a string, `type` should contain the message content type like
 'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
 
 

@@ -244,12 +244,12 @@ last '`messageId` received. If the `id` argument is omitted, **all** stored
 'events' will be returned.
 
 
-#### Account.removeMessage(id) *WIP*
+#### Account.removeMessage(message, cb=null) *WIP*
 
-Removes a message with `id` from the (local) account object and server. If you have other devices online, they will get a `removeMessage` event.
+Removes a message from the (local) account object and server. If you have other devices online, they will get a `removeMessage` event.
 
 
-#### Account.removeConversation(uri) *WIP*
+#### Account.removeConversation(uri, cb=null) *WIP*
 
 Removes all messages from and to  `uri` from the (local) account object and server. If you have other devices online, they will get a `removeConversation` event.
 
@@ -728,6 +728,6 @@ Getter property for the type of the message, it can be `normal` or `status`.
 Getter property for the state of the message. It can be `received`, `pending`, `delivered`, `failed`, `accepted`, `displayed`.
 
 
-#### Message.dispostionState
+#### Message.dispositionState
 
-Getter property for the dispositon state of the message. It can be `delivered`, `displayed`.
+Getter property for the disposition state of the message. It can be `delivered`, `displayed`.

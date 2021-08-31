@@ -134,6 +134,8 @@ Events emitted:
       message_timestamp and state for the disposition change.
     * application/sylk-message-remove: content will contain the contact
       and message_id fields for the message that needs to be removed.
+    * application/sylk-conversation-read: content will contain the uri of the contact for whom all messages should be set
+      to `displayed`
     * application/sylk-conversation-remove: content will contain the uri of the contact that
       needs to be removed.
 
@@ -141,6 +143,7 @@ Events emitted for message synchronisation between devices with the same account
 * **outgoingMessage**: emitted when a different device sends a message to a contact. The argument will be a `message` object.
   Please note that a `sendingMessage` event is also emitted.
 * **removeMessage**: emitted when a different device removes a message. The argument will be a `message` object.
+* **readConversation**: emitted when a different device marks a conversation as read. The argument is the contact for the conversation
 * **removeConversation**: emitted when a different device removes a conversation.
   The argument is the contact for which the conversation needs to be removed.
 
@@ -242,6 +245,12 @@ An optional callback can be given, which will be called with an error if there w
 Send a sync conversations request starting from `id`. The `id` can contain the
 last '`messageId` received. If the `id` argument is omitted, **all** stored
 'events' will be returned.
+
+
+#### Account.markConversationRead(uri) *WIP*
+
+Sends a markConversationRead request to the server for  `uri`. It will also mark all messages from `uri` in the local account as displayed.
+If you have other devices online, they will get a `readConversation` event.
 
 
 #### Account.removeMessage(message, cb=null) *WIP*

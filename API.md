@@ -241,12 +241,13 @@ the received messages requested `positive-delivery` disposition.
 An optional callback can be given, which will be called with an error if there was one.
 
 
-#### Account.syncConversations(id=null) *WIP*
+#### Account.syncConversations(id=null, cb=null) *WIP*
 
 Send a sync conversations request starting from `id`. The `id` can contain the
 last '`messageId` received. If the `id` argument is omitted, **all** stored
 'events' will be returned.
 
+The callback will return with an optional error if the message was sent.
 
 #### Account.markConversationRead(uri) *WIP*
 

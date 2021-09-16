@@ -48,6 +48,8 @@ Events emitted:
   connecting, connected, ready, disconnected and closed. If the connection is involuntarily interrupted the state will
   transition to disconnected and the connection will be retried. Once the closed state is set, as a result of the user
   calling Connection.close(), the connection can no longer be used or reconnected.
+* **publicKey**: emitted after a publicKey lookup. One argument is provided: the result from the lookup request. This
+  is an object with the following attributes publicKey and uri.
 
 
 #### Connection.addAccount(options={}, cb=null)
@@ -83,6 +85,10 @@ Example:
     connection.removeAccount(account, function(error) {
         console('Account removed!');
     });
+
+#### Connection.lookupPublicKey(uri)
+
+Lookup the public key of an uri on the server. A `publicKey` event will be emitted with the lookup result.
 
 
 #### Connection.reconnect()

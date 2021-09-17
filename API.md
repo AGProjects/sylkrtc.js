@@ -277,6 +277,37 @@ with the public key as it is stored on the server. Note, it can be null if
 there is nothing on the server.
 
 
+#### Account.addPGPkeys(keys)
+
+Adds your PGP keys. `keys` should be an object with two attributes: publicKey and privateKey.
+This will enable message encryption and decription for the account. Messages
+will be automatically encrypted and decrypted if the remote party is
+compatible.
+
+
+#### Account.generatePGPKeys(cb=null)
+
+Generates a new PGP public/private key pair. The callback will be called with
+an object with three attributes, publicKey and privateKey and a revocation
+Certificate. The event `privateKeysGenerated` will also be emitted with the
+same object.
+
+
+#### Account.decryptKeyImport(message, password, cb=null)
+
+Decrypt a private key message. The function takes a `message` object, the
+password and a callback. The callback will be call with the decrypted message
+and an extra attribute inside the message `didDecrypt`. If decryption fails it
+will return with an empty message and `didDecrypt` will be false.  {
+
+
+#### Account.exportPrivateKey(password)
+
+Exports the PGP private key to yourself. The key will be encrypted with the
+supplied password. The message contains the unencrypted public key followed by
+the encrypted private key.
+
+
 ### Call
 
 Object representing a audio/video call. Signalling is done using SIP underneath.

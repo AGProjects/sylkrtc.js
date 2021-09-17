@@ -270,6 +270,13 @@ Removes a message from the (local) account object and server. If you have other 
 Removes all messages from and to  `uri` from the (local) account object and server. If you have other devices online, they will get a `removeConversation` event.
 
 
+#### Account.checkIfKeyExists(cb=null)
+
+Checks if your public key exists on the server. The callback will be called
+with the public key as it is stored on the server. Note, it can be null if
+there is nothing on the server.
+
+
 ### Call
 
 Object representing a audio/video call. Signalling is done using SIP underneath.

@@ -127,9 +127,8 @@ Events emitted:
 * **conferenceInvite**: emitted when someone invites us to join a conference. A `data` object is provided, which contains
   an `originator` attribute indicating who invited us, and a `room` attribute indicating what conference we have been invited to.
 * **incomingMessage**: emitted when a message is received. A single argument is provided: the `Message` object.
-* **messageStateChanged**: emitted when a message state has changed. A single argument is provided, an object which contains:
-    * `messageId`
-    * `state`
+* **messageStateChanged**: emitted when a message state has changed. Three arguments are provided, 'id', 'state' and a `data` object.
+  The `data` object contains a reason and code.
 * **sendingMessage**: emitted when sending a message. A single argument is provided which is the `message` object which is sent.
 * **sendingDispositionNotification**: emitted when sending a disposition notification. Multiple arguments are provided. The `id`, `state` and `error`. 
   The `error` can be null

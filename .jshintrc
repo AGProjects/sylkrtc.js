@@ -2,7 +2,6 @@
     "bitwise": true,
     "curly": true,
     "eqeqeq": true,
-    "esnext": true,
     "forin": true,
     "freeze": true,
     "latedef": "function",
@@ -19,7 +18,7 @@
     "maxlen": 140,
     "validthis": true,
     "varstmt": true,
-
+    "esversion": 8,
     "browser": true,
     "browserify": true,
     "devel": false,

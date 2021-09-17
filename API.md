@@ -754,3 +754,9 @@ Getter property for the state of the message. It can be `received`, `pending`, `
 #### Message.dispositionState
 
 Getter property for the disposition state of the message. It can be `delivered`, `displayed`.
+
+
+#### Message.isSecure
+
+Getter property to determine if the message was received encrypted. It will be true when it is.
+

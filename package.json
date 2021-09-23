@@ -27,6 +27,7 @@
     "debug": "^4.1.1",
     "dompurify": "^2.0.10",
     "openpgp": "^5.0.0",
+    "regenerator-runtime": "^0.13.9",
     "sdp-transform": "^2.3.0",
     "uuid": "^7.0.3",
     "webrtc-adapter": "^6.4.8",

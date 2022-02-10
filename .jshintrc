@@ -26,5 +26,6 @@
     "mocha": false,
     "node": true,
     "worker": false,
+    "esversion": 9,
     "predef": ["MediaStream", "MediaStreamTrack", "RTCPeerConnection", "RTCSessionDescription"]
 }

@@ -25,5 +25,6 @@
     "jquery": false,
     "mocha": false,
     "node": true,
-    "worker": false
+    "worker": false,
+    "predef": ["MediaStream", "MediaStreamTrack", "RTCPeerConnection", "RTCSessionDescription"]
 }

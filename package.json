@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@rifflearning/attachmediastream": "^3.0.0",
-    "blueimp-md5": "^2.13.0",
+    "blueimp-md5": "^2.19.0",
     "bowser": "^2.11.0",
     "debug": "^4.3.3",
     "dompurify": "^2.0.10",

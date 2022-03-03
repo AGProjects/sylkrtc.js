@@ -28,7 +28,7 @@
     "dompurify": "^2.0.10",
     "openpgp": "tijmenNL/openpgpjs#4eb26e0",
     "regenerator-runtime": "^0.13.9",
-    "sdp-transform": "^2.3.0",
+    "sdp-transform": "^2.14.1",
     "uuid": "^7.0.3",
     "webrtc-adapter": "^6.4.8",
     "websocket": "^1.0.34"

@@ -61,6 +61,9 @@ Optionally *realm* can be passed, which will be used instead of the domain for t
 The *password* won't be stored or transmitted as given, the HA1 hash (as used in
 [Digest access authentication](https://en.wikipedia.org/wiki/Digest_access_authentication)) is created and used instead.
 
+If you need to extract SIP headers for incoming calls, an option *incomingHeaderPrefixes* can be set. This should
+contain an array of string prefixes for the wanted headers.
+
 The `cb` argument is a callback which will be called with an error and the account object
 itself.
 
@@ -174,6 +177,7 @@ Start an outgoing call. Supported options:
 * pcConfig: configuration options for `RTCPeerConnection`. [Reference](http://w3c.github.io/webrtc-pc/#configuration).
 * offerOptions: `RTCOfferOptions`. [Reference](http://w3c.github.io/webrtc-pc/#idl-def-RTCOfferOptions).
 * localStream: user provided local media stream (acquired with `getUserMedia` TODO).
+* headers: custom headers to include in the INVITE. It should be an array of objects with a name and value key.
 
 Example:
 
@@ -215,6 +219,11 @@ Getter property returning the HA1 password for the account.
 #### Account.registrationState
 
 Getter property returning the current registration state.
+
+
+#### Account.incomingHeaderPrefixes
+
+Getter property returning the value of incomingHeaderPrefixes.
 
 
 #### Account.messages *WIP*
@@ -326,6 +335,10 @@ Events emitted:
     * established: call media has been established, in case of early media this happens before accepted
 * **dtmfToneSent**: emitted when one of the tones passed to `sendDtmf` is actually sent. An empty tone indicates all tones have
   finished playing.
+* **incomingMessage**: emitted when a message is received. A single argument is provided: the `Message` object.
+* **messageStateChanged**: emitted when a message state has changed. Three arguments are provided, 'id', 'state' and a `data` object.
+  The `data` object contains a reason and code.
+* **sendingMessage**: emitted when sending a message. A single argument is provided which is the `message` object which is sent.
 
 #### Call.answer(options={})
 
@@ -384,6 +397,14 @@ Sends the given DTMF tones over the active audio stream track.
 **Note**: This feature requires browser support for `RTCPeerConnection.createDTMFSender`.
 
 
+#### Call.sendMessage(message, type, options={}, cb=null)
+
+Send a in dialog/in call message to the remote party. `message` should contain a string, `type` should contain the message content type like
+'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
+
+Options can contain a timestamp key with a Date Object. The callback will return with an optional error if the message was sent.
+
+
 #### Call.account
 
 Getter property which returns the `Account` object associated with this call.
@@ -428,6 +449,12 @@ Getter property which returns the remote identity. (See the `Identity` object).
 #### Call.remoteMediaDirections
 
 Getter property which returns an object with the directions of the remote streams. Note: this **is** related to the SDP "a=" direction attribute.
+
+
+#### Call.headers
+
+Getter property which returns the custom headers array associated with this call. This will contain the matched headers
+from the incomingHeaderPrefixes, or the headers set on outgoing calls.
 
 
 #### Call.statistics

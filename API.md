@@ -317,6 +317,18 @@ supplied password. The message contains the unencrypted public key followed by
 the encrypted private key.
 
 
+#### Account.encryptFile(uri, file)
+
+Encrypt a file with PGP if PGP encryption is supported and returns a Promise object with the result.
+The object consists of a file and the `didEncrypt`, which indicates the result.
+
+
+#### Account.decryptFile(contents, filename)
+
+Decrypt a string with file contents with PGP if PGP is supported and returns a Promise object with the result.
+The object consists of a file and the `didDecrypt`, which indicates the result.
+
+
 ### Call
 
 Object representing a audio/video call. Signalling is done using SIP underneath.

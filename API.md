@@ -840,6 +840,17 @@ Getter property for the disposition state of the message. It can be `delivered`,
 Getter property to determine if the message was received encrypted. It will be true when it is.
 
 
+#### Message.json
+
+Getter property to determine which contains the parsed content of a filetransfer message. If the content can't be parsed, it is empty and
+`jsonError` is set to `true`.
+
+
+#### Message.jsonError
+
+Getter property to indicate if json parsing of the message contents was successfull. It can be `true` or `false`.
+
+
 ### Statistics
 
 Object used to gather statistics.

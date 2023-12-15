@@ -1,6 +1,6 @@
 {
   "name": "sylkrtc",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "main": "lib/sylkrtc.js",
   "description": "SylkServer WebRTC Gateway client library",
   "repository": {

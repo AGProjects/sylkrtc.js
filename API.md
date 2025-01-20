@@ -35,6 +35,7 @@ Helper module with utility functions.
 * `attachMediaStream`: function to easily attach a media stream to an element. It reexports [attachmediastream](https://github.com/otalk/attachMediaStream).
 * `closeMediaStream`: function to close the given media stream.
 * `sanatizeHtml`: function to XSS sanitize html strings
+* `comparePGPKeys`: function to compare public PGP keys. Two arguments are required `key1`, `key2`.
 
 ### Connection
 

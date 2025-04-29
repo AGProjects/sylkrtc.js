@@ -109,6 +109,9 @@ Close the connection with SylkServer. All accounts will be unbound.
 
 Getter property returning the current connection state.
 
+#### Connection.addressbook *WIP MOCK*
+
+Getter property returning the addressbook.
 
 ### Account
 
@@ -880,6 +883,183 @@ Events emitted:
                 outbound: []
             }
 
+### Addressbook *WIP MOCK*
+
+Object that contains the addressbook from all the accounts.
 
 
+Events emitted:
+* **addressbookDataLoaded**: emitted when the addressbook data from the server for an account is loaded,
+* **addressbookDataUpdated**: emitted when the addressbook data is updated on the server,
+* **addressbookDataUpdateFailed**: emitted when the addressbook data failed to
+  update on the server. The client should retry the operaton later. Five arguments are provided: `error`, 
+  `action`, `type`, `data`, `account`.
+  
 
+#### Addressbook.contacts  *WIP MOCK*
+
+Getter property to get all the contacts.
+
+#### Addressbook.policies *WIP MOCK*
+
+Getter property to get all the policies.
+
+#### Addressbook.groups *WIP MOCK*
+
+Getter property to get all the groups.
+
+#### Addressbook.getContact(contactId)  *WIP MOCK*
+
+Get a single contact with `contactId`.
+
+#### Addressbook.addContact(contact)  *WIP MOCK*
+
+Add a contact for all accounts on the connection.
+
+#### Addressbook.updateContact(contact)  *WIP MOCK*
+
+Update a contact for all accounts on the connection.
+
+#### Addressbook.deleteContact(contactId)  *WIP MOCK*
+
+Delete a contact with `contactId` for all accounts on the connection.
+
+#### Addressbook.getPolicy(policyId)  *WIP MOCK*
+
+Get a single policy with `policyId` for all accounts on the connection.
+
+#### Addressbook.addPolicy(policy)  *WIP MOCK*
+
+Add a policy for all accounts on the connection.
+
+#### Addressbook.updatePolicy(policy) *WIP MOCK*
+
+Update a polic for all accounts on the connection.y
+
+#### Addressbook.deletePolicy(policyId)  *WIP MOCK*
+
+Delete a poolicy with `policyId` for all accounts on the connection.
+
+#### Addressbook.getGroup(groupId)  *WIP MOCK*
+
+Get a single grouo with `groupId`for all accounts on the connection.
+
+#### Addressbook.addGroup(group)  *WIP MOCK*
+
+Add a group for all accounts on the connection.
+
+#### Addressbook.updateGroup(group)  *WIP MOCK*
+
+Update a group for all accounts on the connection.
+
+#### Addressbook.deleteGroup(groupId)  *WIP MOCK*
+
+Delete a group with `groupId` for all accounts on the connection.
+
+#### Addressbook.addGroupMember(groupId, contactId)  *WIP MOCK*
+
+Add a `contactId` to a `groupId` for all accounts on the connection.
+
+#### Addressbook.deleteGroupMember(groupId, contactId)  *WIP MOCK*
+
+Delete a `contactId` from a `groupId` for all accounts on the connection.
+
+#### Addressbook.load(addressbookData)  *WIP MOCK*
+
+Load stored data into the addressbook.
+
+#### Datastructures:
+
+##### Contact:
+
+```javascript
+{
+  "id": "string",
+  "name": "string",
+  "uris": [
+    {
+      "id": "string",
+      "uri": "string",
+      "type": "string",
+      "attributes": {},
+      "default": false
+    }
+  ],
+  "dialog": {
+    "policy": "default",
+    "subscribe": false
+  },
+  "presence": {
+    "policy": "default",
+    "subscribe": false
+  },
+  "attributes": {},
+  "default_uri": {
+    "id": "string",
+    "uri": "string",
+    "type": "string",
+    "attributes": {}
+  }
+}
+```
+
+
+##### Policy
+
+
+```javascript
+{
+  "id": "string",
+  "name": "string",
+  "uri": "string",
+  "dialog": {
+    "policy": "default",
+    "subscribe": false
+  },
+  "presence": {
+    "policy": "default",
+    "subscribe": false
+  },
+  "attributes": {}
+}
+```
+
+##### Group 
+
+```javascript
+{
+  "id": "string",
+  "name": "string",
+  "attributes": {},
+  "contacts": [
+    {
+      "id": "string",
+      "name": "string",
+      "uris": [
+        {
+          "id": "string",
+          "uri": "string",
+          "type": "string",
+          "attributes": {},
+          "default": false
+        }
+      ],
+      "dialog": {
+        "policy": "default",
+        "subscribe": false
+      },
+      "presence": {
+        "policy": "default",
+        "subscribe": false
+      },
+      "attributes": {},
+      "default_uri": {
+        "id": "string",
+        "uri": "string",
+        "type": "string",
+        "attributes": {}
+      }
+    }
+  ]
+}
+```

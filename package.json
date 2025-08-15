@@ -15,11 +15,6 @@
   ],
   "license": "MIT",
   "readmeFilename": "README.md",
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
-  },
   "dependencies": {
     "@rifflearning/attachmediastream": "^3.0.0",
     "blueimp-md5": "^2.19.0",
@@ -37,19 +32,14 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "babelify": "^10.0.0",
-    "browserify": "^16.5.1",
+    "esbuild": "0.25.9",
+    "events": "^3.3.0",
     "gulp": "^4.0.2",
     "gulp-filelog": "^0.4.1",
-    "gulp-header": "^2.0.9",
     "gulp-jshint": "^2.0.1",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0",
     "jshint": "^2.13.4",
     "jshint-stylish": "^2.2.0",
     "minimist": "^1.2.0",
-    "through2": "^3.0.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^2.0.0"
+    "timers-browserify": "^2.0.12"
   }
 }

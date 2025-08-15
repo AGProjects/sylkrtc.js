@@ -1,35 +1,27 @@
 'use strict';
 
-var babelify = require('babelify');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
-var uglify = require('gulp-uglify');
-var filelog = require('gulp-filelog');
-var header = require('gulp-header');
-var sourcemaps = require('gulp-sourcemaps');
-var through = require('through2');
-var parseArgs = require('minimist');
-var fs = require('fs');
-var path = require('path');
-
-var PKG_INFO = require('./package.json');
+const esbuild  = require('esbuild');
+const gulp = require('gulp');
+const jshint = require('gulp-jshint');
+const stylish = require('jshint-stylish');
+const filelog = require('gulp-filelog');
+const parseArgs = require('minimist');
+const fs = require('fs');
+const _ = require('lodash');
+const path = require('path');
+const PKG_INFO = require('./package.json');
 
 // gulp-header.
-var BANNER = fs.readFileSync('banner.txt').toString();
-var BANNER_OPTS = {
+const BANNER = fs.readFileSync('banner.txt').toString();
+const BANNER_OPTS = {
     pkg: PKG_INFO,
     currentYear: (new Date()).getFullYear()
 };
 
-var noop = function() {
-    return through.obj();
-}
+const compiledBanner = _.template(BANNER);
+const bannerString = compiledBanner(BANNER_OPTS);
 
-var env = parseArgs(process.argv.slice(2));
+const env = parseArgs(process.argv.slice(2));
 
 gulp.task('lint', function () {
     return gulp.src('lib/**/*.js')
@@ -39,29 +31,54 @@ gulp.task('lint', function () {
 });
 
 
-gulp.task('build', function () {
-    var dest;
-    var isProduction = (env.type === 'production');
-    if (isProduction) {
-        dest = PKG_INFO.name + '.min.js';
-    } else {
-        dest = PKG_INFO.name + '.js';
-    }
-    return browserify([path.join(__dirname, PKG_INFO.main)],
-                      {standalone: PKG_INFO.name,
-                       debug: true})
-        .transform(babelify)
-        .bundle()
-        .pipe(source(dest))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(filelog('build'))
-        .pipe(isProduction ? uglify({mangle: false}) : noop())
-        .pipe(header(BANNER, BANNER_OPTS))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('dist/'));
-});
+const polyfillPlugin = {
+  name: 'node-polyfills',
+  setup(build) {
+    build.onResolve({ filter: /^events$/ }, () => ({
+      path: require.resolve('events/'),
+      namespace: 'file'
+    }));
 
+    build.onResolve({ filter: /^timers$/ }, () => ({
+      path: require.resolve('timers-browserify'),
+      namespace: 'file'
+    }));
+  }
+};
+
+gulp.task('build', async function () {
+    const isProduction = env.type === 'production';
+    const destFileName = isProduction ? `${PKG_INFO.name}.min.js` : `${PKG_INFO.name}.js`;
+
+    await esbuild.build({
+        entryPoints: [path.join(__dirname, PKG_INFO.main)],
+        bundle: true,
+        format: 'esm',
+        globalName: PKG_INFO.name,
+        sourcemap: true,
+        minify: isProduction,
+        outfile: path.join('dist', destFileName),
+        banner: {
+            js: bannerString
+        },
+        plugins: [polyfillPlugin]
+    });
+    await esbuild.build({
+        entryPoints: ['lib/worker.js'],
+        bundle: true,
+        format: 'esm',       // keep esm for workers
+        outfile: 'dist/worker.js',
+        sourcemap: isProduction,
+        minify: isProduction,
+        banner: {
+            js: bannerString
+        },
+        plugins: [polyfillPlugin]
+    });
+
+    return gulp.src(`dist/${destFileName}`)
+        .pipe(filelog('build'))
+});
 
 gulp.task('watch', function() {
     gulp.watch(['lib/**/*.js'], gulp.series('lint', 'build'));

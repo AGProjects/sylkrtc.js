@@ -31,6 +31,7 @@ Build a minified version:
 
     make min
 
+The build file `worker.js` needs to be placed in the same location as the `sylkrtc(.min).js` script.
 
 ## Development
 

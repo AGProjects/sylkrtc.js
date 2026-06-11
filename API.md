@@ -109,7 +109,7 @@ Close the connection with SylkServer. All accounts will be unbound.
 
 Getter property returning the current connection state.
 
-#### Connection.addressbook *WIP MOCK*
+#### Connection.addressbook *WIP*
 
 Getter property returning the addressbook.
 
@@ -883,9 +883,9 @@ Events emitted:
                 outbound: []
             }
 
-### Addressbook *WIP MOCK*
+### Addressbook *WIP*
 
-Object that contains the addressbook from all the accounts.
+Object that contains the addressbook from all the accounts. It will be populated if the account registers successfully.
 
 
 Events emitted:
@@ -898,75 +898,75 @@ Events emitted:
 * **dataDeleted**: emitted when addressbook data is deleted on the server.
 
 
-#### Addressbook.contacts  *WIP MOCK*
+#### Addressbook.contacts  *WIP*
 
 Getter property to get all the contacts.
 
-#### Addressbook.policies *WIP MOCK*
+#### Addressbook.policies *WIP*
 
 Getter property to get all the policies.
 
-#### Addressbook.groups *WIP MOCK*
+#### Addressbook.groups *WIP*
 
 Getter property to get all the groups.
 
-#### Addressbook.getContact(contactId)  *WIP MOCK*
+#### Addressbook.getContact(contactId)  *WIP*
 
 Get a single contact with `contactId`.
 
-#### Addressbook.addContact(contact)  *WIP MOCK*
+#### Addressbook.addContact(contact)  *WIP*
 
 Add a contact for all accounts on the connection.
 
-#### Addressbook.updateContact(contact)  *WIP MOCK*
+#### Addressbook.updateContact(contact)  *WIP*
 
 Update a contact for all accounts on the connection.
 
-#### Addressbook.deleteContact(contactId)  *WIP MOCK*
+#### Addressbook.deleteContact(contactId)  *WIP*
 
 Delete a contact with `contactId` for all accounts on the connection.
 
-#### Addressbook.getPolicy(policyId)  *WIP MOCK*
+#### Addressbook.getPolicy(policyId)  *WIP*
 
 Get a single policy with `policyId` for all accounts on the connection.
 
-#### Addressbook.addPolicy(policy)  *WIP MOCK*
+#### Addressbook.addPolicy(policy)  *WIP*
 
 Add a policy for all accounts on the connection.
 
-#### Addressbook.updatePolicy(policy) *WIP MOCK*
+#### Addressbook.updatePolicy(policy) *WIP*
 
 Update a polic for all accounts on the connection.y
 
-#### Addressbook.deletePolicy(policyId)  *WIP MOCK*
+#### Addressbook.deletePolicy(policyId)  *WIP*
 
 Delete a poolicy with `policyId` for all accounts on the connection.
 
-#### Addressbook.getGroup(groupId)  *WIP MOCK*
+#### Addressbook.getGroup(groupId)  *WIP*
 
 Get a single grouo with `groupId`for all accounts on the connection.
 
-#### Addressbook.addGroup(group)  *WIP MOCK*
+#### Addressbook.addGroup(group)  *WIP*
 
 Add a group for all accounts on the connection.
 
-#### Addressbook.updateGroup(group)  *WIP MOCK*
+#### Addressbook.updateGroup(group)  *WIP*
 
 Update a group for all accounts on the connection.
 
-#### Addressbook.deleteGroup(groupId)  *WIP MOCK*
+#### Addressbook.deleteGroup(groupId)  *WIP*
 
 Delete a group with `groupId` for all accounts on the connection.
 
-#### Addressbook.addGroupMember(groupId, contactId)  *WIP MOCK*
+#### Addressbook.addGroupMember(groupId, contactId)  *WIP*
 
 Add a `contactId` to a `groupId` for all accounts on the connection.
 
-#### Addressbook.deleteGroupMember(groupId, contactId)  *WIP MOCK*
+#### Addressbook.deleteGroupMember(groupId, contactId)  *WIP*
 
 Delete a `contactId` from a `groupId` for all accounts on the connection.
 
-#### Addressbook.load(addressbookData)  *WIP MOCK*
+#### Addressbook.load(addressbookData)  *WIP*
 
 Load stored data into the addressbook.
 

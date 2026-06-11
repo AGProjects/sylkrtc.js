@@ -889,12 +889,14 @@ Object that contains the addressbook from all the accounts.
 
 
 Events emitted:
-* **addressbookDataLoaded**: emitted when the addressbook data from the server for an account is loaded,
-* **addressbookDataUpdated**: emitted when the addressbook data is updated on the server,
-* **addressbookDataUpdateFailed**: emitted when the addressbook data failed to
-  update on the server. The client should retry the operaton later. Five arguments are provided: `error`, 
-  `action`, `type`, `data`, `account`.
-  
+* **dataLoaded**: emitted when the addressbook data from the server for an account is loaded,
+* **dataCacheLoaded**: emitted when the addressbook cache data from the client is loaded,
+* **dataUpdated**: emitted when the addressbook data is updated on the server,
+* **dataUpdateFailed**: emitted when the addressbook data failed to
+  update on the server. The client should retry the operaton later. Five arguments are provided: `error`,
+  `action`, `type`, `data`, `account`,
+* **dataDeleted**: emitted when addressbook data is deleted on the server.
+
 
 #### Addressbook.contacts  *WIP MOCK*
 
@@ -1024,7 +1026,7 @@ Load stored data into the addressbook.
 }
 ```
 
-##### Group 
+##### Group
 
 ```javascript
 {

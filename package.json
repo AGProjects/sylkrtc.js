@@ -31,7 +31,7 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "esbuild": "0.25.9",
+    "esbuild": "0.28.1",
     "events": "^3.3.0",
     "gulp": "^4.0.2",
     "gulp-filelog": "^0.4.1",

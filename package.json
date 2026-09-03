@@ -23,7 +23,7 @@
     "openpgp": "tijmenNL/openpgpjs#4eb26e0",
     "regenerator-runtime": "^0.13.9",
     "sdp-transform": "^2.14.1",
-    "uuid": "^7.0.3",
+    "uuid": "^11.1.0",
     "webrtc-adapter": "^9.0.5",
     "websocket": "^1.0.34"
   },

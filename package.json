@@ -19,7 +19,7 @@
     "blueimp-md5": "^2.19.0",
     "bowser": "^2.11.0",
     "debug": "^4.3.3",
-    "dompurify": "^2.0.10",
+    "dompurify": "^3.4.14",
     "openpgp": "tijmenNL/openpgpjs#4eb26e0",
     "regenerator-runtime": "^0.13.9",
     "sdp-transform": "^2.14.1",

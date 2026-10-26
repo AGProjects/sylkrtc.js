@@ -65,6 +65,9 @@ The *password* won't be stored or transmitted as given, the HA1 hash (as used in
 If you need to extract SIP headers for incoming calls, an option *incomingHeaderPrefixes* can be set. This should
 contain an array of string prefixes for the wanted headers.
 
+Optionally *handleCallMessages* can be set to `true` to let the account handle in call messages (see
+`Account.handleCallMessages`). It defaults to `false`.
+
 The `cb` argument is a callback which will be called with an error and the account object
 itself.
 
@@ -134,9 +137,12 @@ Events emitted:
 * **conferenceInvite**: emitted when someone invites us to join a conference. A `data` object is provided, which contains
   an `originator` attribute indicating who invited us, and a `room` attribute indicating what conference we have been invited to.
 * **incomingMessage**: emitted when a message is received. A single argument is provided: the `Message` object.
+  If `handleCallMessages` is enabled, this is also emitted for messages received in a call.
 * **messageStateChanged**: emitted when a message state has changed. Three arguments are provided, 'id', 'state' and a `data` object.
   The `data` object contains a reason and code.
+  If `handleCallMessages` is enabled, this is also emitted for messages sent in a call.
 * **sendingMessage**: emitted when sending a message. A single argument is provided which is the `message` object which is sent.
+  If `handleCallMessages` is enabled, this is also emitted for messages sent in a call.
 * **sendingDispositionNotification**: emitted when sending a disposition notification. Multiple arguments are provided. The `id`, `state` and `error`. 
   The `error` can be null
 * **syncConversations**: emitted when the syncConversations function has
@@ -230,6 +236,24 @@ Getter property returning the current registration state.
 Getter property returning the value of incomingHeaderPrefixes.
 
 
+#### Account.handleCallMessages
+
+Getter / setter property (boolean, default `false`). It can also be set with the `handleCallMessages` option of
+`Connection.addAccount`.
+
+When enabled, the account treats in call messages as account messages:
+
+* Messages received in a call are re-emitted on the account as `incomingMessage` and stored in `Account.messages`.
+  Only text content types are handled, other content types and OTR messages are ignored. Applications should listen on
+  the account only, and not also on `Call`'s `incomingMessage`, otherwise they will get every message twice.
+* The `sendingMessage` and `messageStateChanged` events of the call are re-emitted on the account.
+* Once a message has been received from a remote party in a call, `Account.sendMessage` to that party uses the
+  call (`Call.sendMessage`) for as long as the call is `established`. Before that, and after the call has ended,
+  messages are sent as normal account messages.
+
+Note: messages sent through a call are not PGP encrypted, they are sent as is.
+
+
 #### Account.messages *WIP*
 
 Getter property returning the messages.
@@ -248,6 +272,10 @@ Send a message to (SIP) uri. The message will be send with IMDN enabled. `messag
 'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
 
 Options can contain a timestamp key with a Date Object. The callback will return with an optional error if the message was sent.
+
+If `handleCallMessages` is enabled and the remote party has sent a message in a call that is still established, the
+message is sent through that call instead (see `Account.handleCallMessages`). The options are then passed on to
+`Call.sendMessage`.
 
 #### Account.sendDispositionNotification(uri, id, timestamp, state, cb=null) *WIP*
 
@@ -352,6 +380,7 @@ Events emitted:
 * **dtmfToneSent**: emitted when one of the tones passed to `sendDtmf` is actually sent. An empty tone indicates all tones have
   finished playing.
 * **incomingMessage**: emitted when a message is received. A single argument is provided: the `Message` object.
+  If `Account.handleCallMessages` is enabled, the account re-emits these, so listen on the account instead.
 * **messageStateChanged**: emitted when a message state has changed. Three arguments are provided, 'id', 'state' and a `data` object.
   The `data` object contains a reason and code.
 * **sendingMessage**: emitted when sending a message. A single argument is provided which is the `message` object which is sent.
@@ -418,7 +447,14 @@ Sends the given DTMF tones over the active audio stream track.
 Send a in dialog/in call message to the remote party. `message` should contain a string, `type` should contain the message content type like
 'text/plain', 'text/html', 'image/png'. The function returns an instance of `Message`.
 
-Options can contain a timestamp key with a Date Object. The callback will return with an optional error if the message was sent.
+Options can contain:
+* timestamp: a Date Object.
+* id: a message id to use instead of a generated one.
+* metadata: message metadata, serialized the same way as for `Account.sendMessage`.
+
+The callback will return with an optional error if the message was sent.
+
+Messages sent through a call are not PGP encrypted.
 
 
 #### Call.account
